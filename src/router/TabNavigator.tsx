@@ -1,6 +1,7 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useTheme } from "react-native-paper";
+import { Logo } from "src/components/Logo";
 import { Cart } from "src/screens/Cart";
 import { Favorites } from "src/screens/Favorites";
 import { Home } from "src/screens/Home";
@@ -12,9 +13,21 @@ export function TabNavigator() {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      screenOptions={{
+      screenOptions={({ navigation }) => ({
+        headerTitle: "",
+        headerLeft: () => (
+          <MaterialCommunityIcons
+            onPress={() => navigation.toggleDrawer()}
+            name="menu"
+            size={26}
+            color={theme.colors.primary}
+          />
+        ),
+        headerLeftContainerStyle: { paddingLeft: 12 },
+        headerRight: () => <Logo />,
+        headerRightContainerStyle: { paddingRight: 12 },
         tabBarActiveTintColor: theme.colors.primary,
-      }}
+      })}
     >
       <Tab.Screen
         name="Home"

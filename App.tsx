@@ -5,7 +5,8 @@ import {
   MD3LightTheme as DefaultTheme,
   PaperProvider,
 } from "react-native-paper";
-import { TabNavigator } from "src/router/TabNavigator";
+import { AppNavigator } from "src/router/AppRouter";
+import "react-native-gesture-handler";
 
 const theme = {
   ...DefaultTheme,
@@ -29,7 +30,7 @@ const AppContent = () => {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <TabNavigator />
+      <AppNavigator />
     </View>
   );
 };
