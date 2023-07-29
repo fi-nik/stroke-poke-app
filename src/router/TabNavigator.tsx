@@ -18,8 +18,6 @@ export function TabNavigator() {
       initialRouteName="Home"
       screenOptions={({ navigation }) => ({
         headerTitle: "",
-        tabBarLabelStyle: { paddingTop: 0 },
-
         headerLeft: () => (
           <MenuIcon onPress={() => navigation.toggleDrawer()} />
         ),

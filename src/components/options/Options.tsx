@@ -19,9 +19,12 @@ export function Options({ options, onChange, selectedOptions }: Props) {
   return (
     <Wrapper>
       <SectionList
+        style={{ flex: 1 }}
         extraData={extraData}
         sections={options}
-        renderSectionFooter={() => <SectionSeparator />}
+        renderSectionFooter={({ section: { key } }) =>
+          key !== options[options.length - 1].key ? <SectionSeparator /> : null
+        }
         renderSectionHeader={({ section: { title, description } }) => (
           <OptionsHeader>
             <OptionsTitle>{title}</OptionsTitle>
@@ -52,10 +55,13 @@ export function Options({ options, onChange, selectedOptions }: Props) {
   );
 }
 
-const Wrapper = styled.View``;
+const Wrapper = styled.View`
+  flex: 1;
+`;
 
 const OptionsHeader = styled.View`
   margin-bottom: 20px;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 const OptionItemWrapper = styled.View<{ addSeparator: boolean }>`
   margin-bottom: ${({ addSeparator }) => (addSeparator ? 16 : 0)}px;

@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { Card } from "src/components/Card";
+import { PrimaryButton } from "src/components/button/PrimaryButton";
+import { SecondaryButton } from "src/components/button/SecondaryButton";
+import { ArrowRight } from "src/components/icons/arrow-right";
+import { Flex } from "src/components/layout/Flex";
 import { Options } from "src/components/options/Options";
+import styled from "styled-components/native";
 
 export function StepTwo({
   sizeOptions,
@@ -37,25 +42,42 @@ export function StepTwo({
     },
   ];
   return (
-    <Card>
-      <Options
-        options={data}
-        onChange={(key, value) =>
-          setSelectedOptions((prevState) => {
-            if (key === "other") {
-              return {
-                ...prevState,
-                [key]: {
-                  ...prevState[key],
-                  [value]: !(prevState[key] && prevState[key][value]),
-                },
-              };
-            }
-            return { ...prevState, [key]: value };
-          })
-        }
-        selectedOptions={selectedOptions}
-      />
-    </Card>
+    <Flex>
+      <Card>
+        <Options
+          options={data}
+          onChange={(key, value) =>
+            setSelectedOptions((prevState) => {
+              if (key === "other") {
+                return {
+                  ...prevState,
+                  [key]: {
+                    ...prevState[key],
+                    [value]: !(prevState[key] && prevState[key][value]),
+                  },
+                };
+              }
+              return { ...prevState, [key]: value };
+            })
+          }
+          selectedOptions={selectedOptions}
+        />
+      </Card>
+      <ActionButtons>
+        <SecondaryButton label="Back" onPress={() => null} />
+        <PrimaryButton
+          label="Next"
+          onPress={() => null}
+          RightIcon={ArrowRight}
+        />
+      </ActionButtons>
+    </Flex>
   );
 }
+
+const ActionButtons = styled.View`
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+`;

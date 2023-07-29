@@ -9,7 +9,7 @@ type Props = {
   onPress: () => void;
   RightIcon?: () => ReactElement;
 };
-export function PrimaryButton({
+export function SecondaryButton({
   label,
   onPress,
   RightIcon,
@@ -30,15 +30,18 @@ export function PrimaryButton({
 }
 
 const Wrapper = styled.TouchableHighlight`
-  border-radius: 4px;
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.black};
+  border-radius: 4px;
+  background-color: ${({ theme }) => theme.colors.white};
+  border-width: 1px;
+  border-color: ${({ theme }) => theme.colors.black};
   padding: 8px 16px;
 `;
 
 const ButtonLabel = styled(Caption)`
   width: 80%;
   align-self: center;
+  color: ${({ theme }) => theme.colors.black};
   text-align: center;
 `;
 

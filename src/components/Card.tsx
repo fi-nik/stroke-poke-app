@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 
 export const Card = styled.View`
   padding: 16px;
+  flex: 1;
   border-radius: 4px;
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.border.primary};
