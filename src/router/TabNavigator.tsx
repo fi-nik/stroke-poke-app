@@ -1,6 +1,9 @@
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Logo } from "src/components/Logo";
+import { CartIcon } from "src/components/icons/cart";
+import { FavoriteIcon } from "src/components/icons/favorites";
+import { HomeIcon } from "src/components/icons/home";
+import { MenuIcon } from "src/components/icons/menu";
 import { Cart } from "src/screens/Cart";
 import { Favorites } from "src/screens/Favorites";
 import { Home } from "src/screens/Home";
@@ -15,13 +18,10 @@ export function TabNavigator() {
       initialRouteName="Home"
       screenOptions={({ navigation }) => ({
         headerTitle: "",
+        tabBarLabelStyle: { paddingTop: 0 },
+
         headerLeft: () => (
-          <MaterialCommunityIcons
-            onPress={() => navigation.toggleDrawer()}
-            name="menu"
-            size={26}
-            color={theme.colors.primary}
-          />
+          <MenuIcon onPress={() => navigation.toggleDrawer()} />
         ),
         headerLeftContainerStyle: { paddingLeft: 12 },
         headerRight: () => <Logo />,
@@ -34,13 +34,7 @@ export function TabNavigator() {
         component={Home}
         options={{
           tabBarLabel: "Home",
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="home-outline"
-              color={color}
-              size={26}
-            />
-          ),
+          tabBarIcon: ({ color }) => <HomeIcon fill={color} />,
         }}
       />
       <Tab.Screen
@@ -48,13 +42,7 @@ export function TabNavigator() {
         component={Favorites}
         options={{
           tabBarLabel: "Favorites",
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="star-outline"
-              color={color}
-              size={26}
-            />
-          ),
+          tabBarIcon: ({ color }) => <FavoriteIcon fill={color} />,
         }}
       />
       <Tab.Screen
@@ -62,13 +50,7 @@ export function TabNavigator() {
         component={Cart}
         options={{
           tabBarLabel: "Cart",
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="cart-outline"
-              color={color}
-              size={26}
-            />
-          ),
+          tabBarIcon: ({ color }) => <CartIcon fill={color} />,
         }}
       />
     </Tab.Navigator>
