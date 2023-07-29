@@ -1,45 +1,50 @@
-import React from "react";
-import { FlatList } from "react-native";
+import React, { useMemo, useState } from "react";
+import { View } from "react-native";
 import { Card } from "src/components/Card";
-import { RadioButton } from "src/components/button/RadioButton";
-import { Body } from "src/components/text/Body";
-import { Headline } from "src/components/text/Headline";
+import { PrimaryButton } from "src/components/button/PrimaryButton";
+import { ArrowRight } from "src/components/icons/arrow-right";
+import { Options } from "src/components/options/Options";
 import styled from "styled-components/native";
 
-export function StepOne({ setSelectedOption, selectedOption, options }) {
+type Props = {
+  onConfirm: (value: OptionValue) => void;
+  options: Option[];
+};
+const pokeKey = "poke";
+
+export function StepOne({ onConfirm, options }: Props) {
+  const [selectedOptions, setSelectedOptions] = useState({});
+  const data = useMemo(
+    () => [
+      {
+        key: pokeKey,
+        title: "Make your own poke bowl",
+        multiselect: false,
+        data: options,
+        description:
+          "Select the type of bowl your’d like, the size, add the base sauce and all the added ingredients. We’ll take care of the rest!",
+      },
+    ],
+    [options],
+  );
   return (
-    <Card>
-      <CardTitle>Make your own poke bowl</CardTitle>
-      <Body>
-        Select the type of bowl your’d like, the size, add the base, sauce and
-        all the added ingredients. We’ll take care of the rest!
-      </Body>
-      <BowlOptions>
-        <FlatList
-          data={options}
-          renderItem={({ item: option, index }) => (
-            <RadioButtonWrapper addSeparator={index < options.length - 1}>
-              <RadioButton
-                onToggle={setSelectedOption}
-                checked={selectedOption === option}
-                value={option}
-                label={option}
-              />
-            </RadioButtonWrapper>
-          )}
+    <View>
+      <Card>
+        <Options
+          options={data}
+          selectedOptions={selectedOptions}
+          onChange={(key, value) => setSelectedOptions({ [key]: value })}
         />
-      </BowlOptions>
-    </Card>
+      </Card>
+      <NextButton
+        onPress={() => onConfirm(selectedOptions[pokeKey])}
+        label="Next"
+        RightIcon={ArrowRight}
+      />
+    </View>
   );
 }
 
-const CardTitle = styled(Headline)`
-  margin-bottom: 8px;
-`;
-const RadioButtonWrapper = styled.View<{ addSeparator: boolean }>`
-  margin-bottom: ${({ addSeparator }) => (addSeparator ? 16 : 0)}px;
-`;
-
-const BowlOptions = styled.View`
-  padding-top: 24px;
+const NextButton = styled(PrimaryButton)`
+  margin-top: 40px;
 `;
