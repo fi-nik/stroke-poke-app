@@ -1,11 +1,11 @@
 import React from "react";
-import { View } from "react-native";
+import { ScreenWrapper } from "src/components/ScreenWrapper";
 import { StepCounter } from "src/components/StepCounter";
 
 export const Home = () => {
   return (
-    <View>
-      <StepCounter current={1} size={4} />
-    </View>
+    <ScreenWrapper>
+      <StepCounter current={0} size={4} />
+    </ScreenWrapper>
   );
 };
