@@ -1,10 +1,10 @@
 import { View } from "react-native";
-import { Text } from "react-native-paper";
+import { Body } from "src/components/text/Body";
 
 export const Logo = () => {
   return (
     <View>
-      <Text>StokePoke</Text>
+      <Body>StokePoke</Body>
     </View>
   );
 };

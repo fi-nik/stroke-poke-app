@@ -1,10 +1,10 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { useTheme } from "react-native-paper";
 import { Logo } from "src/components/Logo";
 import { Cart } from "src/screens/Cart";
 import { Favorites } from "src/screens/Favorites";
 import { Home } from "src/screens/Home";
+import { useTheme } from "styled-components";
 
 const Tab = createBottomTabNavigator();
 

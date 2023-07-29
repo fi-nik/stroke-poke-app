@@ -1,11 +1,11 @@
 import React from "react";
 import { View } from "react-native";
-import { Text } from "react-native-paper";
+import { StepCounter } from "src/components/StepCounter";
 
 export const Home = () => {
   return (
     <View>
-      <Text>This is home screen</Text>
+      <StepCounter current={1} size={4} />
     </View>
   );
 };

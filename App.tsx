@@ -1,28 +1,25 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
-import {
-  MD3LightTheme as DefaultTheme,
-  PaperProvider,
-} from "react-native-paper";
 import { AppNavigator } from "src/router/AppRouter";
 import "react-native-gesture-handler";
+import { ThemeProvider } from "styled-components/native";
 
 const theme = {
-  ...DefaultTheme,
   colors: {
-    ...DefaultTheme.colors,
-    primary: "tomato",
+    primary: "#F86060",
     secondary: "yellow",
+    white: "#FFF",
+    black: "#292838",
   },
 };
 export default function App() {
   return (
-    <PaperProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <NavigationContainer>
         <AppContent />
       </NavigationContainer>
-    </PaperProvider>
+    </ThemeProvider>
   );
 }
 

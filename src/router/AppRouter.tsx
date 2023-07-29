@@ -1,6 +1,5 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { View } from "react-native";
-import { Button } from "react-native-paper";
+import { View, Button } from "react-native";
 import { TabNavigator } from "src/router/TabNavigator";
 const Drawer = createDrawerNavigator();
 
@@ -8,13 +7,12 @@ function CustomDrawerContent({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Button
+        title={"Go somewhere"}
         onPress={() => {
           // Navigate using the `navigation` prop that you received
           navigation.navigate("SomeScreen");
         }}
-      >
-        Go somewhere
-      </Button>
+      />
     </View>
   );
 }
