@@ -23,6 +23,7 @@ export function StepCounter({ current, size }) {
 
 const Wrapper = styled.View`
   width: 100%;
+  margin-bottom: 40px;
 `;
 
 const LineContainer = styled.View`

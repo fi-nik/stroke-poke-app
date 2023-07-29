@@ -11,6 +11,9 @@ const theme = {
     secondary: "yellow",
     white: "#FFF",
     black: "#292838",
+    border: {
+      primary: "#E9E8F8",
+    },
   },
 };
 export default function App() {
