@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { AppNavigator } from 'src/router/AppRouter';
 import 'react-native-gesture-handler';
 import { ThemeProvider } from 'styled-components/native';
+import { QueryProvider } from 'src/providers/QuertClientProvider';
 
 const theme = {
   colors: {
@@ -19,9 +20,11 @@ const theme = {
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <AppContent />
-      </NavigationContainer>
+      <QueryProvider>
+        <NavigationContainer>
+          <AppContent />
+        </NavigationContainer>
+      </QueryProvider>
     </ThemeProvider>
   );
 }

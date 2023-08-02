@@ -7,6 +7,7 @@ import { SecondaryButton } from 'src/components/button/SecondaryButton';
 import { ArrowRight } from 'src/components/icons/arrow-right';
 import { Flex, FlexShrink } from 'src/components/layout';
 import { Options } from 'src/components/options/Options';
+import { useBowlDetailsOptions } from 'src/hooks/bowls';
 import styled from 'styled-components/native';
 import * as yup from 'yup';
 
@@ -60,7 +61,7 @@ const formikProps = {
   validationSchema: ingredientValidationScheme,
 };
 
-export function Ingredients({
+export function BowlDetails({
   sizeOptions,
   goBack,
   baseOptions,

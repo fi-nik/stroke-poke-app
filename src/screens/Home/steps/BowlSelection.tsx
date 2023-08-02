@@ -6,6 +6,7 @@ import { PrimaryButton } from 'src/components/button/PrimaryButton';
 import { ArrowRight } from 'src/components/icons/arrow-right';
 import { Flex } from 'src/components/layout';
 import { Options } from 'src/components/options/Options';
+import { useBowlOptions, useBowls } from 'src/hooks/bowls';
 import styled from 'styled-components/native';
 import * as yup from 'yup';
 
@@ -16,7 +17,7 @@ type Props = {
 
 const pokeKey = 'poke';
 
-export function PokeBowl({ onConfirm, options }: Props) {
+export function BowlSelection({ onConfirm, options }: Props) {
   const formik = useFormik({
     initialValues: { [pokeKey]: '' },
     validationSchema: yup.object().shape({
