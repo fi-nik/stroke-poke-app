@@ -1,6 +1,6 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
-import { Text } from "./Text";
+import { Text } from './Text';
 
 export const Headline = styled(Text)`
   font-weight: 700;

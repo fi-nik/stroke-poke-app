@@ -1,6 +1,6 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
-import { Text } from "./Text";
+import { Text } from './Text';
 
 export const Body = styled(Text)<{ bold?: boolean; colour?: string }>`
   font-weight: ${({ bold = false }) => (bold ? 700 : 400)};

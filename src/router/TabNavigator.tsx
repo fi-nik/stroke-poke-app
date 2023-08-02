@@ -1,13 +1,13 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Logo } from "src/components/Logo";
-import { CartIcon } from "src/components/icons/cart";
-import { FavoriteIcon } from "src/components/icons/favorites";
-import { HomeIcon } from "src/components/icons/home";
-import { MenuIcon } from "src/components/icons/menu";
-import { Cart } from "src/screens/Cart";
-import { Favorites } from "src/screens/Favorites";
-import { Home } from "src/screens/Home";
-import { useTheme } from "styled-components";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Logo } from 'src/components/Logo';
+import { CartIcon } from 'src/components/icons/cart';
+import { FavoriteIcon } from 'src/components/icons/favorites';
+import { HomeIcon } from 'src/components/icons/home';
+import { MenuIcon } from 'src/components/icons/menu';
+import { Cart } from 'src/screens/Cart';
+import { Favorites } from 'src/screens/Favorites';
+import { Home } from 'src/screens/Home';
+import { useTheme } from 'styled-components';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,7 +17,7 @@ export function TabNavigator() {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={({ navigation }) => ({
-        headerTitle: "",
+        headerTitle: '',
         headerLeft: () => (
           <MenuIcon onPress={() => navigation.toggleDrawer()} />
         ),
@@ -25,13 +25,12 @@ export function TabNavigator() {
         headerRight: () => <Logo />,
         headerRightContainerStyle: { paddingRight: 12 },
         tabBarActiveTintColor: theme.colors.primary,
-      })}
-    >
+      })}>
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarLabel: "Home",
+          tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => <HomeIcon fill={color} />,
         }}
       />
@@ -39,7 +38,7 @@ export function TabNavigator() {
         name="Favorites"
         component={Favorites}
         options={{
-          tabBarLabel: "Favorites",
+          tabBarLabel: 'Favorites',
           tabBarIcon: ({ color }) => <FavoriteIcon fill={color} />,
         }}
       />
@@ -47,7 +46,7 @@ export function TabNavigator() {
         name="Cart"
         component={Cart}
         options={{
-          tabBarLabel: "Cart",
+          tabBarLabel: 'Cart',
           tabBarIcon: ({ color }) => <CartIcon fill={color} />,
         }}
       />

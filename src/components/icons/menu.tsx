@@ -1,5 +1,5 @@
-import { TouchableOpacity } from "react-native";
-import Svg, { Path } from "react-native-svg";
+import { TouchableOpacity } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
 
 export function MenuIcon({ onPress }: { onPress?: () => void }) {
   return (

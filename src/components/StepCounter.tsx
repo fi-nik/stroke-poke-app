@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Body } from "src/components/text/Body";
-import styled from "styled-components/native";
+import { useState } from 'react';
+import { Body } from 'src/components/text/Body';
+import styled from 'styled-components/native';
 
 export function StepCounter({ current, size }) {
   const [steps] = useState(
@@ -13,7 +13,7 @@ export function StepCounter({ current, size }) {
         <Body>{` of ${size}`}</Body>
       </Body>
       <LineContainer>
-        {steps.map((step) => (
+        {steps.map(step => (
           <Line key={step} filled={step <= current} width={100 / size} />
         ))}
       </LineContainer>

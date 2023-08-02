@@ -1,5 +1,5 @@
-import { View } from "react-native";
-import Svg, { Path } from "react-native-svg";
+import { View } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
 
 export const Logo = () => {
   return (
