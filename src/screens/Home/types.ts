@@ -14,4 +14,7 @@ export type OptionConfig = {
   description?: string;
   multiselect: boolean;
   data: Option[];
+  error: string | null;
+  disabled?: boolean;
+  onChange: (value: OptionValue) => void;
 };

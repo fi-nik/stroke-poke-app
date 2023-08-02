@@ -1,8 +1,8 @@
-import { ReactElement } from "react";
-import { View } from "react-native";
-import styled from "styled-components/native";
+import { ReactElement } from 'react';
+import { View } from 'react-native';
+import styled from 'styled-components/native';
 
-import { Caption } from "../text/Caption";
+import { Caption } from '../text/Caption';
 
 type Props = {
   label: string;
@@ -36,6 +36,7 @@ const Wrapper = styled.TouchableHighlight`
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.black};
   padding: 8px 16px;
+  min-height: 40px;
 `;
 
 const ButtonLabel = styled(Caption)`

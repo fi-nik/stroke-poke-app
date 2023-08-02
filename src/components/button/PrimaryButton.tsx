@@ -1,14 +1,15 @@
-import { ReactElement } from "react";
-import { View } from "react-native";
-import styled from "styled-components/native";
+import { ReactElement } from 'react';
+import { TouchableHighlightProps, View } from 'react-native';
+import styled from 'styled-components/native';
 
-import { Caption } from "../text/Caption";
+import { Caption } from '../text/Caption';
 
-type Props = {
+type Props = Omit<TouchableHighlightProps, 'onPress'> & {
   label: string;
   onPress: () => void;
   RightIcon?: () => ReactElement;
 };
+
 export function PrimaryButton({
   label,
   onPress,
@@ -30,16 +31,18 @@ export function PrimaryButton({
 }
 
 const Wrapper = styled.TouchableHighlight`
-  border-radius: 4px;
   flex: 1;
+  border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.black};
   padding: 8px 16px;
+  min-height: 40px;
 `;
 
 const ButtonLabel = styled(Caption)`
   width: 80%;
   align-self: center;
   text-align: center;
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 const RightIconWrapper = styled.View`
