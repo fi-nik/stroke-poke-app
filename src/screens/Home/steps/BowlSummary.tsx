@@ -10,9 +10,7 @@ import { FavoriteIcon } from 'src/components/icons/favorites';
 import { Flex, FlexRow, FlexShrink } from 'src/components/layout';
 import { Body } from 'src/components/text/Body';
 import { Headline } from 'src/components/text/Headline';
-import { useDeleteFavorites } from 'src/hooks/favorites/useDeleteFavorites';
-import { useFavorite } from 'src/hooks/favorites/useFavorite';
-import { useSaveFavorite } from 'src/hooks/favorites/useSaveFavorites';
+import { useFavorite, useFavoriteActions } from 'src/hooks/favorites';
 import {
   Base,
   Bowl,
@@ -43,15 +41,14 @@ export function BowlSummary({
 }: Props) {
   const [favoriteId, setFavoriteId] = useState(null);
   const theme = useTheme();
-  const saveFavorite = useSaveFavorite();
-  const deleteFavorite = useDeleteFavorites();
+  const actions = useFavoriteActions();
   const favorite = useFavorite(favoriteId);
   const addToFavorites = () => {
     if (favorite) {
-      deleteFavorite(favorite.id);
+      actions.removeFavorite(favorite.id);
       setFavoriteId(null);
     } else {
-      const favoriteId = saveFavorite({
+      const favoriteId = actions.addFavorite({
         base,
         size,
         extraIngredients,

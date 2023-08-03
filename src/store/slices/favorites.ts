@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import * as Crypto from 'expo-crypto';
-import { BowlData, Favorite } from 'src/types';
+import { Favorite } from 'src/types';
 
 export interface FavoriteState {
   list: Favorite[];
@@ -12,13 +11,11 @@ const initialState: FavoriteState = {
   map: {},
 };
 
-
 export const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
   reducers: {
     addFavorite: (state, action: { payload: Favorite }) => {
-
       state.list.push(action.payload);
       state.map[action.payload.id] = action.payload;
     },

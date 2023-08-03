@@ -1,12 +1,12 @@
+import * as Crypto from 'expo-crypto';
 import React, { useCallback, useState, useEffect } from 'react';
 import { Steps } from 'screens/Home/steps';
 
 import { useBowlDetailsOptions } from './hooks/useBowlDetailOptions';
 import { useBowlOptions } from './hooks/useBowlOptions';
 import { useExtraIngredientOptions } from './hooks/useExtraIngredientOptions';
-
 const emptyData = {
-  id: 'temporary',
+  id: Crypto.randomUUID(),
   extraIngredients: [],
   ingredients: [],
   size: null,

@@ -1,13 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { CartTab } from 'src/components/CartTabIcon';
 import { Logo } from 'src/components/Logo';
-import { CartIcon } from 'src/components/icons/cart';
 import { FavoriteIcon } from 'src/components/icons/favorites';
 import { HomeIcon } from 'src/components/icons/home';
 import { MenuIcon } from 'src/components/icons/menu';
 import { Cart } from 'src/screens/Cart';
 import { Favorites } from 'src/screens/Favorites';
-import {HomeScreen} from 'src/screens/Home';
-import { BowlData } from 'src/types';
+import { HomeScreen } from 'src/screens/Home';
 import { useTheme } from 'styled-components';
 
 import { TabNavigatorParamList, TabRoutes } from './types';
@@ -48,10 +47,17 @@ export function TabNavigator() {
       <Tab.Screen
         name={TabRoutes.Cart}
         component={Cart}
-        options={{
+        options={({ navigation }) => ({
           tabBarLabel: 'Cart',
-          tabBarIcon: ({ color }) => <CartIcon fill={color} />,
-        }}
+          tabBarIcon: ({ color }) => (
+            <CartTab
+              fill={color}
+              setBadgeNumber={number =>
+                navigation.setOptions({ tabBarBadge: number })
+              }
+            />
+          ),
+        })}
       />
     </Tab.Navigator>
   );

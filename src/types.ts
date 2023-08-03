@@ -1,3 +1,5 @@
+import * as Crypto from 'expo-crypto';
+
 export type Base = {
   id: number;
   name: string;
@@ -64,19 +66,29 @@ export enum QueryKey {
   sizes = 'sizes',
   bases = 'bases',
 }
-export type BowlData = {
+export class BowlData {
   size: Size;
   type: Bowl;
   sauce: Sauce;
   base: Base;
   ingredients: Ingredient[];
   extraIngredients: ExtraIngredient[];
-};
+}
 
 export type BowlOrder = BowlData & {
   count: number;
 };
 
-export type Favorite = BowlData & {
+export class Favorite extends BowlData {
   id: string;
-};
+  constructor() {
+    super();
+    this.id = Crypto.randomUUID();
+    this.extraIngredients = [];
+    this.ingredients = [];
+    this.size = null;
+    this.sauce = null;
+    this.base = null;
+    this.type = null;
+  }
+}
