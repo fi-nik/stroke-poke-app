@@ -1,5 +1,5 @@
 import { GestureResponderEvent } from 'react-native';
-import { RadioCircle } from 'src/components/icons/radio-circle';
+import { RadioCircleIcon } from 'src/components/icons/RadioCircle';
 import { Body } from 'src/components/text/Body';
 import { useTheme } from 'styled-components';
 import styled from 'styled-components/native';
@@ -21,7 +21,7 @@ export function RadioButton({
   const theme = useTheme();
   return (
     <Wrapper onPress={onToggle} disabled={disabled}>
-      <RadioCircle
+      <RadioCircleIcon
         lineColor={theme.colors.black}
         fillColor={theme.colors.primary}
         filled={checked}

@@ -1,5 +1,5 @@
 import { GestureResponderEvent } from 'react-native';
-import { CheckboxIcon } from 'src/components/icons/checkbox';
+import { CheckboxIcon } from 'src/components/icons/Checkbox';
 import { Body } from 'src/components/text/Body';
 import { useTheme } from 'styled-components';
 import styled from 'styled-components/native';

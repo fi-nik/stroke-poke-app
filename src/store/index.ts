@@ -1,12 +1,22 @@
+import {
+  addBowl,
+  decrementBowl,
+  removeBowl,
+  incrementBowl,
+} from './slices/cart';
 import { removeFavorite, addFavorite } from './slices/favorites';
-import { addBowl, decrementBowl, removeBowl, incrementBowl } from './slices/cart';
 import { store } from './store';
 
 export const favoriteActions = {
   removeFavorite,
   addFavorite,
 };
-export const cartActions = { addBowl, decrementBowl, removeBowl, incrementBowl }
+export const cartActions = {
+  addBowl,
+  decrementBowl,
+  removeBowl,
+  incrementBowl,
+};
 export { StoreProvider } from './provider';
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

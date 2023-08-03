@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'src/components/Card';
 import { PrimaryButton } from 'src/components/button/PrimaryButton';
-import { ArrowRight } from 'src/components/icons/arrow-right';
+import { ArrowRightIcon } from 'src/components/icons/ArrowRight';
 import { Flex } from 'src/components/layout';
 import { Options } from 'src/components/options/Options';
 import { Option, OptionConfig } from 'src/components/options/types';
@@ -54,7 +54,7 @@ export function BowlType({ onConfirm, options, initialValue }: Props) {
         <SubmitButton
           onPress={form.handleSubmit}
           label="Next"
-          RightIcon={<ArrowRight />}
+          RightIcon={<ArrowRightIcon />}
         />
       </ShrinkView>
     </Flex>

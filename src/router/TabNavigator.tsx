@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { CartTab } from 'src/components/CartTabIcon';
 import { Logo } from 'src/components/Logo';
-import { FavoriteIcon } from 'src/components/icons/favorites';
-import { HomeIcon } from 'src/components/icons/home';
-import { MenuIcon } from 'src/components/icons/menu';
+import { FavoriteIcon } from 'src/components/icons/Favorites';
+import { HomeIcon } from 'src/components/icons/Home';
+import { MenuIcon } from 'src/components/icons/Menu';
 import { Cart } from 'src/screens/Cart';
 import { Favorites } from 'src/screens/Favorites';
 import { HomeScreen } from 'src/screens/Home';

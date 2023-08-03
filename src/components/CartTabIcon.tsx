@@ -1,21 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useCartNumber } from 'src/hooks/cart/useCartNumber';
 import styled from 'styled-components/native';
 
-import { CartIcon } from './icons/cart';
+import { CartIcon } from './icons/Cart';
 type Props = {
   setBadgeNumber: (number) => void;
   fill: string;
 };
 
 export function CartTab({ fill, setBadgeNumber }: Props) {
+  const [current, setCurrent] = useState(0);
   const number = useCartNumber();
 
   useEffect(() => {
-    setBadgeNumber(number);
-  }, [number]);
+    if (current !== number) {
+      setBadgeNumber(number);
+      setCurrent(number);
+    }
+  }, [number, current, setBadgeNumber]);
 
-  console.log('number', number);
   return (
     <Wrapper>
       <CartIcon fill={fill} />

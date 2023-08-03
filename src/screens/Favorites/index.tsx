@@ -8,7 +8,7 @@ import { ScreenWrapper } from 'src/components/ScreenWrapper';
 import { IconButton } from 'src/components/button/IconButton';
 import { PrimaryButton } from 'src/components/button/PrimaryButton';
 import { SecondaryButton } from 'src/components/button/SecondaryButton';
-import { FavoriteIcon } from 'src/components/icons/favorites';
+import { FavoriteIcon } from 'src/components/icons/Favorites';
 import { FlexRow } from 'src/components/layout';
 import { useFavoriteActions } from 'src/hooks/favorites';
 import { useFavorites } from 'src/hooks/favorites/useFavorites';

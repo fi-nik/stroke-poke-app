@@ -6,7 +6,7 @@ type Props = {
   fillColor: string;
   filled: boolean;
 };
-export function RadioCircle({ lineColor, filled = false, fillColor }: Props) {
+export function RadioCircleIcon({ lineColor, filled = false, fillColor }: Props) {
   return (
     <Svg width="25" height="25" viewBox="0 0 25 25" fill="none">
       <Circle

@@ -6,7 +6,7 @@ import { CardTitle } from 'src/components/CardTitle';
 import { IconButton } from 'src/components/button/IconButton';
 import { PrimaryButton } from 'src/components/button/PrimaryButton';
 import { SecondaryButton } from 'src/components/button/SecondaryButton';
-import { FavoriteIcon } from 'src/components/icons/favorites';
+import { FavoriteIcon } from 'src/components/icons/Favorites';
 import { Flex, FlexRow, FlexShrink } from 'src/components/layout';
 import { Body } from 'src/components/text/Body';
 import { Headline } from 'src/components/text/Headline';
