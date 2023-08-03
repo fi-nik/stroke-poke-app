@@ -1,6 +1,10 @@
 import { ReactElement } from 'react';
 import { TouchableHighlightProps, View } from 'react-native';
-import {ButtonLabel, ButtonWrapper, RightIconWrapper} from 'src/components/button/styled';
+import {
+  ButtonLabel,
+  ButtonWrapper,
+  RightIconWrapper,
+} from 'src/components/button/styled';
 import styled, { useTheme } from 'styled-components/native';
 
 type Props = Omit<TouchableHighlightProps, 'onPress'> & {

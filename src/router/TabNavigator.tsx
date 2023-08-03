@@ -6,16 +6,19 @@ import { HomeIcon } from 'src/components/icons/home';
 import { MenuIcon } from 'src/components/icons/menu';
 import { Cart } from 'src/screens/Cart';
 import { Favorites } from 'src/screens/Favorites';
-import { Home } from 'src/screens/Home';
+import {HomeScreen} from 'src/screens/Home';
+import { BowlData } from 'src/types';
 import { useTheme } from 'styled-components';
 
-const Tab = createBottomTabNavigator();
+import { TabNavigatorParamList, TabRoutes } from './types';
+
+const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
 export function TabNavigator() {
   const theme = useTheme();
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName={TabRoutes.Home}
       screenOptions={({ navigation }) => ({
         headerTitle: '',
         headerLeft: () => (
@@ -27,15 +30,15 @@ export function TabNavigator() {
         tabBarActiveTintColor: theme.colors.primary,
       })}>
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name={TabRoutes.Home}
+        component={HomeScreen}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => <HomeIcon fill={color} />,
         }}
       />
       <Tab.Screen
-        name="Favorites"
+        name={TabRoutes.Favorites}
         component={Favorites}
         options={{
           tabBarLabel: 'Favorites',
@@ -43,7 +46,7 @@ export function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Cart"
+        name={TabRoutes.Cart}
         component={Cart}
         options={{
           tabBarLabel: 'Cart',

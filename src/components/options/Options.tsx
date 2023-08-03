@@ -31,7 +31,7 @@ export function Options({ options, selectedOptions }: Props) {
     }) => {
       const selected = multiselect
         ? selectedOptions[key] && selectedOptions[key][option.value.id]
-        : selectedOptions[key] === option.value;
+        : selectedOptions[key]?.id === option.value.id;
       return (
         <OptionItemWrapper
           addSeparator={index < data.length - 1}

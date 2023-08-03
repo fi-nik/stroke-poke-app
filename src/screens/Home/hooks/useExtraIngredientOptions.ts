@@ -1,9 +1,9 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Option } from 'src/components/options/types';
 import ExtraIngredientService from 'src/services/extraIngredientService';
 import { ExtraIngredient } from 'src/types';
 
- const useExtraIngredients = () => {
+const useExtraIngredients = () => {
   const [extraIngredients, setExtraIngredients] = useState<ExtraIngredient[]>(
     [],
   );

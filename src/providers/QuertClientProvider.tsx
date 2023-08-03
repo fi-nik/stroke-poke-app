@@ -5,6 +5,7 @@ import ExtraIngredientService from 'src/services/extraIngredientService';
 import IngredientService from 'src/services/ingredientService';
 import SauceService from 'src/services/sauceService';
 import SizeService from 'src/services/sizeService';
+
 const queryClient = new QueryClient();
 
 const prefetchData = async () => {

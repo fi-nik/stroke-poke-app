@@ -59,3 +59,20 @@ export type Response<T> = {
     totalItems: number;
   };
 };
+export enum QueryKey {
+  favorites = 'favorites',
+  sizes = 'sizes',
+  bases = 'bases',
+}
+export type BowlData = {
+  size: Size;
+  type: Bowl;
+  sauce: Sauce;
+  base: Base;
+  ingredients: Ingredient[];
+  extraIngredients: ExtraIngredient[];
+};
+
+export type Favorite = BowlData & {
+  id: string;
+};

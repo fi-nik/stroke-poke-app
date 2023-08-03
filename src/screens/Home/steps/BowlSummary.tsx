@@ -1,6 +1,8 @@
 import { useCallback, useState } from 'react';
 import { ScrollView } from 'react-native';
 import { Card } from 'src/components/Card';
+import { CardContent } from 'src/components/CardContent';
+import { CardTitle } from 'src/components/CardTitle';
 import { IconButton } from 'src/components/button/IconButton';
 import { PrimaryButton } from 'src/components/button/PrimaryButton';
 import { SecondaryButton } from 'src/components/button/SecondaryButton';
@@ -8,6 +10,8 @@ import { FavoriteIcon } from 'src/components/icons/favorites';
 import { Flex, FlexRow, FlexShrink } from 'src/components/layout';
 import { Body } from 'src/components/text/Body';
 import { Headline } from 'src/components/text/Headline';
+import { useDeleteFavorites } from 'src/hooks/favorites/useDeleteFavorites';
+import { useSaveFavorite } from 'src/hooks/favorites/useSaveFavorites';
 import {
   Base,
   Bowl,
@@ -38,8 +42,20 @@ export function BowlSummary({
 }: Props) {
   const [favoriteId, setFavoriteId] = useState(null);
   const theme = useTheme();
+  const saveFavorite = useSaveFavorite();
+  const deleteFavorite = useDeleteFavorites();
   const addToFavorites = () => {
-    return null;
+    if (favoriteId) {
+      return deleteFavorite(favoriteId).then(() => setFavoriteId(null));
+    }
+    return saveFavorite({
+      base,
+      size,
+      extraIngredients,
+      ingredients,
+      sauce,
+      type,
+    }).then(setFavoriteId);
   };
   const addToCart = useCallback(() => null, []);
   const goToCheckout = useCallback(() => null, []);
@@ -50,10 +66,10 @@ export function BowlSummary({
       <FlexShrink>
         <Card>
           <ScrollView bounces={false}>
-            <SummaryTitleArea>
-              <Headline>{type.name}</Headline>
-              <Headline>{`${size.currency}${size.price}`}</Headline>
-            </SummaryTitleArea>
+            <CardTitle
+              title={type.name}
+              price={`${size.currency}${size.price}`}
+            />
             <SummaryContent>
               <SummaryRow>
                 <Body>{size.name + ' size'}</Body>
@@ -117,15 +133,10 @@ const ExtraIngredientRow = styled(RowWithPrice)`
   margin-bottom: 15px;
 `;
 
-const SummaryTitleArea = styled(RowWithPrice)`
-  margin-bottom: 20px;
-`;
-
-const SummaryContent = styled.View`
+const SummaryContent = styled(CardContent)`
   padding-bottom: 5px;
   border-bottom-color: ${({ theme }) => theme.colors.border.primary};
   border-bottom-width: 1px;
-  margin-bottom: 20px;
 `;
 
 const SummaryRow = styled.View`

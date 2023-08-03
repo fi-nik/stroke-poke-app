@@ -1,6 +1,8 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { View, Button } from 'react-native';
+import { Button, View } from 'react-native';
 import { TabNavigator } from 'src/router/TabNavigator';
+import { AppRoutes } from 'src/router/types';
+
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent({ navigation }) {
@@ -26,7 +28,7 @@ export function AppNavigator() {
         headerShown: false,
       })}>
       <Drawer.Screen
-        name="TabNavigator"
+        name={AppRoutes.Tab}
         component={TabNavigator}
         options={{
           drawerLabel: '',

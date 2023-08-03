@@ -59,7 +59,13 @@ export function useBowlDetailsForm({ onSubmit, initialValues }) {
   } = useFormik<Values>({
     validateOnChange: false,
     initialValues: initialValues as Values,
-    onSubmit,
+    onSubmit: values =>
+      onSubmit({
+        ...values,
+        [SectionKeys.BowlIngredients]: Object.values(
+          values[SectionKeys.BowlIngredients],
+        ),
+      }),
     validationSchema: ingredientValidationScheme,
   });
 

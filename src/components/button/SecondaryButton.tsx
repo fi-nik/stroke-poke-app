@@ -5,7 +5,7 @@ import {
   ButtonWrapper,
   RightIconWrapper,
 } from 'src/components/button/styled';
-import styled, { useTheme } from 'styled-components/native';
+import styled from 'styled-components/native';
 
 type Props = {
   label: string;
