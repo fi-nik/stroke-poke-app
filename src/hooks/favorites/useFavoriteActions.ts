@@ -1,14 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
-import * as Crypto from 'expo-crypto';
 import { useCallback, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
-import { FavoritesScreenNavigationProp, TabRoutes } from 'src/router/types';
+import { TabScreenNavigationProp, TabRoutes } from 'src/router/types';
 import { favoriteActions, cartActions } from 'src/store';
-import { BowlData, Favorite } from 'src/types';
+import {BowlData, BowlOrder, Favorite} from 'src/types';
 
 export const useFavoriteActions = () => {
   const dispatch = useDispatch();
-  const navigation = useNavigation<FavoritesScreenNavigationProp>();
+  const navigation =
+    useNavigation<TabScreenNavigationProp<TabRoutes.Favorites>>();
   const editFavorite = useCallback(
     (bowl: Favorite) => {
       navigation.navigate(TabRoutes.Home, {
@@ -24,10 +24,9 @@ export const useFavoriteActions = () => {
     [dispatch],
   );
   const addFavorite = useCallback(
-    (bowlData: BowlData) => {
-      const id = Crypto.randomUUID();
-      dispatch(favoriteActions.addFavorite({ ...bowlData, id }));
-      return id;
+    (bowlData: BowlOrder) => {
+      dispatch(favoriteActions.addFavorite(bowlData));
+      return bowlData.id;
     },
     [dispatch],
   );
@@ -35,9 +34,8 @@ export const useFavoriteActions = () => {
   const addToCart = useCallback(
     async bowl => {
       dispatch(cartActions.addBowl(bowl));
-      navigation.navigate(TabRoutes.Home, { data: new Favorite() });
     },
-    [dispatch, navigation],
+    [dispatch],
   );
 
   return useMemo(

@@ -3,7 +3,7 @@ import { SectionKeys } from 'screens/Home/types';
 import { Card } from 'src/components/Card';
 import { PrimaryButton } from 'src/components/button/PrimaryButton';
 import { SecondaryButton } from 'src/components/button/SecondaryButton';
-import { ArrowRight } from 'src/components/icons/ArrowRight';
+import { ArrowRightIcon } from 'src/components/icons/ArrowRight';
 import { Flex, FlexShrink } from 'src/components/layout';
 import { Options } from 'src/components/options/Options';
 import { Option } from 'src/components/options/types';
@@ -76,7 +76,7 @@ export function ExtraIngredients({
         <NextButton
           label="Next"
           onPress={handleSubmit}
-          RightIcon={<ArrowRight />}
+          RightIcon={<ArrowRightIcon />}
         />
       </ActionButtons>
     </Flex>

@@ -6,6 +6,7 @@ type Props = Omit<TouchableOpacityProps, 'onPress'> & {
   onPress: () => void;
   type: 'primary' | 'secondary';
   Icon?: ReactElement;
+  background?: string;
 };
 
 export function IconButton({ onPress, Icon, type, ...buttonProps }: Props) {
@@ -16,12 +17,16 @@ export function IconButton({ onPress, Icon, type, ...buttonProps }: Props) {
   );
 }
 
-const Wrapper = styled.TouchableOpacity<{ type: 'primary' | 'secondary' }>`
+const Wrapper = styled.TouchableOpacity<{
+  type: 'primary' | 'secondary';
+  background?: string;
+}>`
   border-radius: 4px;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme, type }) =>
-    type === 'primary' ? theme.colors.black : theme.colors.white};
+  background-color: ${({ theme, type, background }) =>
+    background ||
+    (type === 'primary' ? theme.colors.black : theme.colors.white)};
   ${({ type, theme }) =>
     type === 'secondary'
       ? `border-width: 1px; border-color: ${theme.colors.black};`

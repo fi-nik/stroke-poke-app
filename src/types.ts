@@ -67,6 +67,16 @@ export enum QueryKey {
   bases = 'bases',
 }
 export class BowlData {
+  constructor() {
+    this.id = Crypto.randomUUID();
+    this.extraIngredients = [];
+    this.ingredients = [];
+    this.size = null;
+    this.sauce = null;
+    this.base = null;
+    this.type = null;
+  }
+  id: string;
   size: Size;
   type: Bowl;
   sauce: Sauce;
@@ -76,19 +86,8 @@ export class BowlData {
 }
 
 export type BowlOrder = BowlData & {
+  id: string;
   count: number;
 };
 
-export class Favorite extends BowlData {
-  id: string;
-  constructor() {
-    super();
-    this.id = Crypto.randomUUID();
-    this.extraIngredients = [];
-    this.ingredients = [];
-    this.size = null;
-    this.sauce = null;
-    this.base = null;
-    this.type = null;
-  }
-}
+export type Favorite = BowlData;

@@ -7,7 +7,7 @@ import { SectionKeys } from 'screens/Home/types';
 import { ScreenWrapper } from 'src/components/ScreenWrapper';
 import { StepCounter } from 'src/components/StepCounter';
 import { Option } from 'src/components/options/types';
-import { Base, Bowl, Favorite, Ingredient, Sauce, Size } from 'src/types';
+import {Base, Bowl, BowlData, Favorite, Ingredient, Sauce, Size} from 'src/types';
 
 type BowlDetailsData = {
   [SectionKeys.BowlSize]: Size;
@@ -16,7 +16,7 @@ type BowlDetailsData = {
   [SectionKeys.BowlIngredients]: Record<string, Ingredient>;
 };
 type Props = {
-  bowlData: Favorite;
+  bowlData: BowlData;
   bowlOptions: Option[];
   baseOptions: Option[];
   sizeOptions: Option[];

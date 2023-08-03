@@ -1,19 +1,10 @@
-import * as Crypto from 'expo-crypto';
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Steps } from 'screens/Home/steps';
+import { BowlData } from 'src/types';
 
 import { useBowlDetailsOptions } from './hooks/useBowlDetailOptions';
 import { useBowlOptions } from './hooks/useBowlOptions';
 import { useExtraIngredientOptions } from './hooks/useExtraIngredientOptions';
-const emptyData = {
-  id: Crypto.randomUUID(),
-  extraIngredients: [],
-  ingredients: [],
-  size: null,
-  sauce: null,
-  base: null,
-  type: null,
-};
 export const HomeScreen = ({ route }) => {
   /* TODO: Fetch all options at once */
   const bowls = useBowlOptions();
@@ -26,7 +17,7 @@ export const HomeScreen = ({ route }) => {
     }
   }, [route]);
 
-  const [initialBowlData, setInitialBowlData] = useState(emptyData);
+  const [initialBowlData, setInitialBowlData] = useState(new BowlData());
   return (
     <Steps
       key={initialBowlData.id}

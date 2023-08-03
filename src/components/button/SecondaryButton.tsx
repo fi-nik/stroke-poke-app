@@ -19,7 +19,7 @@ export function SecondaryButton({
 }: Props) {
   return (
     <Wrapper {...buttonProps} onPress={onPress}>
-      <ButtonLabel>{label}</ButtonLabel>
+      <ButtonLabel bold>{label}</ButtonLabel>
       {!!RightIcon && <RightIconWrapper>{RightIcon}</RightIconWrapper>}
     </Wrapper>
   );

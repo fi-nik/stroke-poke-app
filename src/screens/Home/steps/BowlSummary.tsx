@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { useCallback, useState } from 'react';
 import { ScrollView } from 'react-native';
 import { Card } from 'src/components/Card';
@@ -12,9 +13,15 @@ import { Body } from 'src/components/text/Body';
 import { Headline } from 'src/components/text/Headline';
 import { useFavorite, useFavoriteActions } from 'src/hooks/favorites';
 import {
+  TabNavigatorParamList,
+  TabRoutes,
+  TabScreenNavigationProp,
+} from 'src/router/types';
+import {
   Base,
   Bowl,
   ExtraIngredient,
+  Favorite,
   Ingredient,
   Sauce,
   Size,
@@ -39,6 +46,7 @@ export function BowlSummary({
   ingredients,
   extraIngredients,
 }: Props) {
+  const navigation = useNavigation<TabScreenNavigationProp<TabRoutes.Home>>();
   const [favoriteId, setFavoriteId] = useState(null);
   const theme = useTheme();
   const actions = useFavoriteActions();
@@ -59,7 +67,26 @@ export function BowlSummary({
       setFavoriteId(favoriteId);
     }
   };
-  const addToCart = useCallback(() => null, []);
+  const addToCart = useCallback(() => {
+    actions.addToCart({
+      base,
+      size,
+      extraIngredients,
+      ingredients,
+      sauce,
+      type,
+    });
+    navigation.navigate(TabRoutes.Home, { data: new Favorite() });
+  }, [
+    navigation,
+    base,
+    size,
+    extraIngredients,
+    ingredients,
+    sauce,
+    type,
+    actions,
+  ]);
   const goToCheckout = useCallback(() => null, []);
   const price = calculatePrice(size, extraIngredients);
 

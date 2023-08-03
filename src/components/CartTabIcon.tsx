@@ -14,7 +14,7 @@ export function CartTab({ fill, setBadgeNumber }: Props) {
 
   useEffect(() => {
     if (current !== number) {
-      setBadgeNumber(number);
+      setBadgeNumber(number === 0 ? null : number);
       setCurrent(number);
     }
   }, [number, current, setBadgeNumber]);

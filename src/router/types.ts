@@ -25,7 +25,7 @@ export type TabNavigatorParamList = {
   [TabRoutes.Cart]: undefined;
 };
 
-export type FavoritesScreenNavigationProp = CompositeNavigationProp<
-  BottomTabNavigationProp<TabNavigatorParamList, TabRoutes.Favorites>,
+export type TabScreenNavigationProp<T extends TabRoutes> = CompositeNavigationProp<
+  BottomTabNavigationProp<TabNavigatorParamList, T>,
   DrawerNavigationProp<AppNavigatorParamList, AppRoutes.Tab>
 >;
