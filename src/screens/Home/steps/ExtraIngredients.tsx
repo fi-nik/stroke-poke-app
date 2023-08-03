@@ -9,24 +9,18 @@ import { Options } from 'src/components/options/Options';
 import { Option } from 'src/components/options/types';
 import { Body } from 'src/components/text/Body';
 import { Headline } from 'src/components/text/Headline';
-import { ExtraIngredient } from 'src/types';
-import { formatPrice } from 'src/utils/price';
+import { ExtraIngredient, Size } from 'src/types';
+import { calculatePrice } from 'src/utils/price';
 import styled, { useTheme } from 'styled-components/native';
 
 import { useExtraIngredientsForm } from '../hooks/useExtraIngredientsForm';
-
-function getExtraSum(extraIngredients: ExtraIngredient[]) {
-  let sum = 0;
-  extraIngredients.forEach(ingredient => (sum += ingredient.price));
-  return sum;
-}
 
 type Props = {
   goBack: () => void;
   onConfirm: (selectedExtraIngredients: ExtraIngredient[]) => void;
   extraIngredients: Option[];
   initialValues: Record<number, ExtraIngredient>;
-  price: number;
+  size: Size;
 };
 
 export function ExtraIngredients({
@@ -34,7 +28,7 @@ export function ExtraIngredients({
   extraIngredients,
   onConfirm,
   initialValues,
-  price,
+  size,
 }: Props) {
   const theme = useTheme();
   const { handleSubmit, values, onChange } = useExtraIngredientsForm({
@@ -63,15 +57,17 @@ export function ExtraIngredients({
       <PriceCard>
         <PriceContent>
           <Body>Regular price</Body>
-          <Headline>{`$${price}`}</Headline>
+          <Headline>{`${size.currency}${size.price}`}</Headline>
         </PriceContent>
         <PriceContent addMarginTop>
           <Body colour={theme.colors.primary}>
             Price with extra ingredients
           </Body>
-          <Headline colour={theme.colors.primary}>{`$${formatPrice(
-            price +
-              getExtraSum(Object.values(values[SectionKeys.ExtraIngredients])),
+          <Headline colour={theme.colors.primary}>{`${
+            size.currency
+          }${calculatePrice(
+            size,
+            Object.values(values[SectionKeys.ExtraIngredients]),
           )}`}</Headline>
         </PriceContent>
       </PriceCard>
@@ -80,7 +76,7 @@ export function ExtraIngredients({
         <PrimaryButton
           label="Next"
           onPress={handleSubmit}
-          RightIcon={ArrowRight}
+          RightIcon={<ArrowRight />}
         />
       </ActionButtons>
     </Flex>

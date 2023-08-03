@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react';
+import { BowlSummary } from 'screens/Home/steps/BowlSummary';
 import { ScreenWrapper } from 'src/components/ScreenWrapper';
 import { StepCounter } from 'src/components/StepCounter';
-import { Bowl } from 'src/types';
+import { Bowl, Size } from 'src/types';
 
 import { useBowlDetailsOptions } from './hooks/useBowlDetailOptions';
 import { useBowlOptions } from './hooks/useBowlOptions';
@@ -61,12 +62,22 @@ export const Home = () => {
         <ExtraIngredients
           initialValues={extraIngredients}
           goBack={goBack}
-          price={bowlDetails[SectionKeys.BowlSize].price}
+          size={bowlDetails[SectionKeys.BowlSize]}
           extraIngredients={extraIngredientsOptions}
           onConfirm={selectedExtraIngredients => {
             setExtraIngredients(selectedExtraIngredients);
             setCurrentStep(3);
           }}
+        />
+      )}
+      {currentStep === 3 && (
+        <BowlSummary
+          type={bowlType}
+          size={bowlDetails[SectionKeys.BowlSize]}
+          sauce={bowlDetails[SectionKeys.BowlSauce]}
+          base={bowlDetails[SectionKeys.BowlBase]}
+          ingredients={Object.values(bowlDetails[SectionKeys.BowlIngredients])}
+          extraIngredients={Object.values(extraIngredients)}
         />
       )}
     </ScreenWrapper>

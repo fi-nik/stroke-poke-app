@@ -81,11 +81,11 @@ export function BowlDetails({
       </FlexShrink>
 
       <ActionButtons>
-        <SecondaryButton label="Back" onPress={goBack} />
-        <PrimaryButton
+        <BackButton label="Back" onPress={goBack} />
+        <NextButton
           label="Next"
           onPress={handleSubmit}
-          RightIcon={ArrowRight}
+          RightIcon={<ArrowRight />}
         />
       </ActionButtons>
     </Flex>
@@ -94,7 +94,14 @@ export function BowlDetails({
 
 const ActionButtons = styled.View`
   flex-shrink: 1;
+  width: 100%;
   flex-direction: row;
   gap: 10px;
   margin-top: 30px;
+`;
+const BackButton = styled(SecondaryButton)`
+  width: 50%;
+`;
+const NextButton = styled(PrimaryButton)`
+  width: 50%;
 `;

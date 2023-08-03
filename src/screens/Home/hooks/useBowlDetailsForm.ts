@@ -102,15 +102,20 @@ export function useBowlDetailsForm({ onSubmit, initialValues }) {
     ? getSizeNumber(values[SectionKeys.BowlSize] as Size)
     : 0;
   const onChangeIngredients = useCallback(
-    (value: OptionValue) => {
-      setFieldTouched(SectionKeys.BowlIngredients, true, false);
+    async (value: OptionValue) => {
+      await setFieldTouched(SectionKeys.BowlIngredients, true, false);
 
-      setFieldValue(SectionKeys.BowlIngredients, {
-        ...selectedIngredients,
-        [value.id]: !selectedIngredients[value.id],
-      }).then(() => {
-        validateField(SectionKeys.BowlIngredients);
-      });
+      if (selectedIngredients && selectedIngredients[value.id]) {
+        const restSelected = { ...selectedIngredients };
+        delete restSelected[value.id];
+        await setFieldValue(SectionKeys.BowlIngredients, restSelected);
+      } else {
+        await setFieldValue(SectionKeys.BowlIngredients, {
+          ...selectedIngredients,
+          [value.id]: value,
+        });
+      }
+      await validateField(SectionKeys.BowlIngredients);
     },
     [setFieldValue, selectedIngredients, validateField, setFieldTouched],
   );

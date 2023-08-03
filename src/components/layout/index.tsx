@@ -6,3 +6,6 @@ export const Flex = styled.View`
 export const FlexShrink = styled.View`
   flex-shrink: 1;
 `;
+export const FlexRow = styled.View`
+  flex-direction: row;
+`;

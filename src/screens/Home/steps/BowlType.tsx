@@ -54,7 +54,7 @@ export function BowlType({ onConfirm, options, initialValue }: Props) {
         <SubmitButton
           onPress={form.handleSubmit}
           label="Next"
-          RightIcon={ArrowRight}
+          RightIcon={<ArrowRight />}
         />
       </ShrinkView>
     </Flex>
