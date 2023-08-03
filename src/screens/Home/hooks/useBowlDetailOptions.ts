@@ -1,42 +1,14 @@
 import { useQueries } from '@tanstack/react-query';
-import { useEffect, useMemo, useState } from 'react';
-import { Option } from 'screens/Home/types';
+import { useMemo } from 'react';
+import { Option } from 'src/components/options/types';
 import BaseService from 'src/services/baseService';
-import BowlService from 'src/services/bowlService';
 import IngredientService from 'src/services/ingredientService';
 import SauceService from 'src/services/sauceService';
 import SizeService from 'src/services/sizeService';
-import { Bowl } from 'src/types';
+import { Size } from 'src/types';
+import { getSizeNumber } from 'src/utils/bowlSize';
 
-export const useBowls = () => {
-  const [bowls, setBowls] = useState<Bowl[]>([]);
-  const [meta, setMeta] = useState(null);
-  useEffect(() => {
-    BowlService.getBowls()
-      .then(({ meta, data }) => {
-        setBowls(data);
-        setMeta(meta);
-      })
-      .catch(error => setBowls(null));
-  }, []);
-
-  return { bowls, meta };
-};
-
-export const useBowlOptions = (): Option[] => {
-  const { bowls } = useBowls();
-  return useMemo(
-    () =>
-      bowls.map(bowl => ({
-        label: bowl.name,
-        value: `${bowl.id}`,
-        description: bowl.description,
-      })),
-    [bowls],
-  );
-};
-
-export function useBowlDetails() {
+function useBowlDetails() {
   const queries = useQueries({
     queries: [
       {
@@ -73,24 +45,22 @@ export const useBowlDetailsOptions = (): {
   const details = useBowlDetails();
   return useMemo(
     () => ({
-      sizes: details[0].data.map(size => ({
-        label: size.name,
-        value: `${size.id}`,
-        description: size.description,
+      sizes: (details[0].data as Size[]).map((size: Size) => ({
+        label: `${size.name} - ${size.currency}${size.price.toFixed(2)}`,
+        value: size,
+        description: `${getSizeNumber(size)} ingredients`,
       })),
       bases: details[1].data.map(base => ({
         label: base.name,
-        value: `${base.id}`,
-        description: base.description,
+        value: base,
       })),
       sauces: details[2].data.map(sauce => ({
         label: sauce.name,
-        value: `${sauce.id}`,
-        description: sauce.description,
+        value: sauce,
       })),
       ingredients: details[3].data.map(ingredient => ({
         label: ingredient.name,
-        value: `${ingredient.id}`,
+        value: ingredient,
       })),
     }),
     [details],

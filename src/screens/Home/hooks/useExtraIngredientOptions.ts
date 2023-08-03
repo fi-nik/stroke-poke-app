@@ -1,8 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
+import { Option } from 'src/components/options/types';
 import ExtraIngredientService from 'src/services/extraIngredientService';
+import { ExtraIngredient } from 'src/types';
 
-export const useExtraIngredients = () => {
-  const [extraIngredients, setExtraIngredients] = useState([]);
+ const useExtraIngredients = () => {
+  const [extraIngredients, setExtraIngredients] = useState<ExtraIngredient[]>(
+    [],
+  );
   const [meta, setMeta] = useState(null);
   useEffect(() => {
     ExtraIngredientService.getExtraIngredients()
@@ -14,6 +18,18 @@ export const useExtraIngredients = () => {
   }, []);
 
   return { extraIngredients, meta };
+};
+
+export const useExtraIngredientOptions = (): Option[] => {
+  const { extraIngredients } = useExtraIngredients();
+  return useMemo(
+    () =>
+      extraIngredients.map(ingredient => ({
+        label: `${ingredient.name} - ${ingredient.currency}${ingredient.price}`,
+        value: ingredient,
+      })),
+    [extraIngredients],
+  );
 };
 
 export const useExtraIngredient = (id: string) => {

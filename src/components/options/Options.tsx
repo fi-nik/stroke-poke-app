@@ -1,24 +1,20 @@
 import React, { useCallback } from 'react';
 import { SectionList } from 'react-native';
-import {
-  Option,
-  OptionConfig,
-  OptionConfigKey,
-  OptionValue,
-} from 'screens/Home/types';
 import { OptionError } from 'src/components/options/OptionError';
 import { OptionItem } from 'src/components/options/OptionItem';
 import { OptionsTitle } from 'src/components/options/OptionsTitle';
 import { Body } from 'src/components/text/Body';
 import styled from 'styled-components/native';
 
+import { Option, OptionConfig, OptionConfigKey, OptionValue } from './types';
+
 type Props = {
   options: OptionConfig[];
   selectedOptions: Record<
     OptionConfigKey,
-    OptionValue | Record<OptionValue, boolean>
+    OptionValue | Record<string, OptionValue>
   >;
-  isValid: boolean;
+  isValid?: boolean;
 };
 
 export function Options({ options, selectedOptions }: Props) {
@@ -34,13 +30,14 @@ export function Options({ options, selectedOptions }: Props) {
       section: OptionConfig;
     }) => {
       const selected = multiselect
-        ? selectedOptions[key] && selectedOptions[key][option.value]
+        ? selectedOptions[key] && selectedOptions[key][option.value.id]
         : selectedOptions[key] === option.value;
       return (
         <OptionItemWrapper
           addSeparator={index < data.length - 1}
           key={key + option.value}>
           <OptionItem
+            description={option.description}
             onPress={onChange}
             type={multiselect ? 'checkbox' : 'radio'}
             value={option.value}

@@ -2,20 +2,31 @@ import React, { memo, useCallback } from 'react';
 import { Checkbox } from 'src/components/button/Checkbox';
 import { RadioButton } from 'src/components/button/RadioButton';
 
+import { OptionValue } from './types';
+
 type Props = {
   type: 'radio' | 'checkbox';
-  onPress: (value: string) => void;
-  value: string;
+  onPress: (value: OptionValue) => void;
+  value: OptionValue;
   label: string;
   description?: string;
   selected: boolean;
   disabled?: boolean;
 };
 export const OptionItem = memo(
-  ({ type, onPress, selected, value, label, disabled = false }: Props) => {
+  ({
+    type,
+    onPress,
+    selected,
+    value,
+    label,
+    description,
+    disabled = false,
+  }: Props) => {
     const onToggle = useCallback(() => onPress(value), [onPress, value]);
     return type === 'radio' ? (
       <RadioButton
+        description={description}
         onToggle={onToggle}
         checked={selected}
         label={label}

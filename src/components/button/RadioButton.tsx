@@ -9,10 +9,12 @@ type Props = {
   disabled?: boolean;
   onToggle: (event: GestureResponderEvent) => void;
   label: string;
+  description: string;
 };
 export function RadioButton({
   checked,
   onToggle,
+  description,
   label,
   disabled = false,
 }: Props) {
@@ -29,6 +31,7 @@ export function RadioButton({
         colour={checked ? theme.colors.primary : theme.colors.black}>
         {label}
       </StyledBody>
+      {description && <Body>{` (${description})`}</Body>}
     </Wrapper>
   );
 }
