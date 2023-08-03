@@ -11,6 +11,7 @@ import { Flex, FlexRow, FlexShrink } from 'src/components/layout';
 import { Body } from 'src/components/text/Body';
 import { Headline } from 'src/components/text/Headline';
 import { useDeleteFavorites } from 'src/hooks/favorites/useDeleteFavorites';
+import { useFavorite } from 'src/hooks/favorites/useFavorite';
 import { useSaveFavorite } from 'src/hooks/favorites/useSaveFavorites';
 import {
   Base,
@@ -44,18 +45,22 @@ export function BowlSummary({
   const theme = useTheme();
   const saveFavorite = useSaveFavorite();
   const deleteFavorite = useDeleteFavorites();
+  const favorite = useFavorite(favoriteId);
   const addToFavorites = () => {
-    if (favoriteId) {
-      return deleteFavorite(favoriteId).then(() => setFavoriteId(null));
+    if (favorite) {
+      deleteFavorite(favorite.id);
+      setFavoriteId(null);
+    } else {
+      const favoriteId = saveFavorite({
+        base,
+        size,
+        extraIngredients,
+        ingredients,
+        sauce,
+        type,
+      });
+      setFavoriteId(favoriteId);
     }
-    return saveFavorite({
-      base,
-      size,
-      extraIngredients,
-      ingredients,
-      sauce,
-      type,
-    }).then(setFavoriteId);
   };
   const addToCart = useCallback(() => null, []);
   const goToCheckout = useCallback(() => null, []);

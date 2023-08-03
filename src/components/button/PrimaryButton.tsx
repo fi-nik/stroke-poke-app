@@ -23,10 +23,8 @@ export function PrimaryButton({
 
   return (
     <Wrapper {...buttonProps} onPress={onPress}>
-      <View>
-        <ButtonLabel colour={theme.colors.white}>{label}</ButtonLabel>
-        {!!RightIcon && <RightIconWrapper>{RightIcon}</RightIconWrapper>}
-      </View>
+      <ButtonLabel colour={theme.colors.white}>{label}</ButtonLabel>
+      {!!RightIcon && <RightIconWrapper>{RightIcon}</RightIconWrapper>}
     </Wrapper>
   );
 }

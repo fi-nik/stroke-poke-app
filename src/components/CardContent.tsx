@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
 export const CardContent = styled.View`
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 `;

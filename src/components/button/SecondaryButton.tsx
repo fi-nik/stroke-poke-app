@@ -1,5 +1,4 @@
 import { ReactElement } from 'react';
-import { View } from 'react-native';
 import {
   ButtonLabel,
   ButtonWrapper,
@@ -20,10 +19,8 @@ export function SecondaryButton({
 }: Props) {
   return (
     <Wrapper {...buttonProps} onPress={onPress}>
-      <View>
-        <ButtonLabel>{label}</ButtonLabel>
-        {!!RightIcon && <RightIconWrapper>{RightIcon}</RightIconWrapper>}
-      </View>
+      <ButtonLabel>{label}</ButtonLabel>
+      {!!RightIcon && <RightIconWrapper>{RightIcon}</RightIconWrapper>}
     </Wrapper>
   );
 }

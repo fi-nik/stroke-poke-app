@@ -33,11 +33,9 @@ export class Favorites {
   async getFavorites(): Promise<Favorite[]> {
     if (!this.fetched) {
       const favoriteJson = await AsyncStorage.getItem(this.table_key);
-      console.log('favoriteJson', favoriteJson);
       this.favorites = JSON.parse(favoriteJson) as Favorite[];
       this.fetched = true;
     }
-    console.log('db favorites', this.favorites);
     return this.favorites;
   }
 
@@ -45,7 +43,6 @@ export class Favorites {
     const id = Crypto.randomUUID();
     this.favorites.push({ ...favorite, id });
     await this.saveFavorites();
-    console.log('id', id, this.favorites);
     return id;
   }
 

@@ -1,20 +1,13 @@
-import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { useCallback } from 'react';
-import { Database } from 'src/database';
-import { Favorite, QueryKey } from 'src/types';
-
+import { useDispatch } from 'react-redux';
+import { favoriteActions } from 'src/store';
 export function useDeleteFavorites() {
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: (favoriteId: string) => {
-      return Database.favorites.deleteFavorite(favoriteId);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QueryKey.favorites] });
-    },
-  });
+  const dispatch = useDispatch();
+
   return useCallback(
-    async (favoriteId: string) => mutation.mutate(favoriteId),
-    [mutation],
+    (favoriteId: string) => {
+      dispatch(favoriteActions.removeFavorite(favoriteId));
+    },
+    [dispatch],
   );
 }

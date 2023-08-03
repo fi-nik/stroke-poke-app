@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, memo } from 'react';
 import { FlatList } from 'react-native';
 import { BowlOrderContent } from 'src/components/BowlOrderContent';
 import { Card } from 'src/components/Card';
@@ -10,41 +10,55 @@ import { PrimaryButton } from 'src/components/button/PrimaryButton';
 import { SecondaryButton } from 'src/components/button/SecondaryButton';
 import { FavoriteIcon } from 'src/components/icons/favorites';
 import { FlexRow } from 'src/components/layout';
+import { useFavoriteActions } from 'src/hooks/favorites/useFavorite';
 import { useFavorites } from 'src/hooks/favorites/useFavorites';
 import { Favorite } from 'src/types';
 import styled, { useTheme } from 'styled-components/native';
 
-export const Favorites = () => {
-  const { data, addToCart, removeFavorite, editFavorite } = useFavorites();
+export const FavoriteItem = memo(({ item }: { item: Favorite }) => {
+  const actions = useFavoriteActions();
   const theme = useTheme();
+
+  return (
+    <CardWrapper key={item.id}>
+      <CardTitle
+        title={item.type.name}
+        price={`${item.size.currency}${item.size.price}`}
+      />
+      <BowlOrderContent {...item} />
+      <SummaryActions>
+        <EditButton label="Edit" onPress={() => actions.editFavorite(item)} />
+        <FlexRow>
+          <FavoriteButton
+            type={'primary'}
+            Icon={<FavoriteIcon fill={theme.colors.white} />}
+            onPress={() => actions.removeFavorite(item.id)}
+          />
+          <CartButton
+            label="Add to Cart"
+            onPress={() => actions.addToCart(item)}
+          />
+        </FlexRow>
+      </SummaryActions>
+    </CardWrapper>
+  );
+});
+
+export const Favorites = () => {
+  const favorites = useFavorites();
+  const renderItem = useCallback(
+    ({ item }: { item: Favorite }) => <FavoriteItem item={item} />,
+    [],
+  );
+
   return (
     <ScreenWrapper>
       <ScreenTitle>Favorites</ScreenTitle>
       <FlatList
-        data={data}
-        renderItem={({ item }: { item: Favorite }) => (
-          <CardWrapper key={item.id}>
-            <CardTitle
-              title={item.type.name}
-              price={`${item.size.currency}${item.size.price}`}
-            />
-            <BowlOrderContent {...item} />
-            <SummaryActions>
-              <EditButton label="Edit" onPress={() => editFavorite(item)} />
-              <FlexRow>
-                <FavoriteButton
-                  type={'primary'}
-                  Icon={<FavoriteIcon fill={theme.colors.white} />}
-                  onPress={() => removeFavorite(item.id)}
-                />
-                <CartButton
-                  label="Add to Cart"
-                  onPress={() => addToCart(item)}
-                />
-              </FlexRow>
-            </SummaryActions>
-          </CardWrapper>
-        )}
+        bounces={false}
+        keyExtractor={item => item.id}
+        data={favorites}
+        renderItem={renderItem}
       />
     </ScreenWrapper>
   );

@@ -73,6 +73,10 @@ export type BowlData = {
   extraIngredients: ExtraIngredient[];
 };
 
+export type BowlOrder = BowlData & {
+  count: number;
+};
+
 export type Favorite = BowlData & {
   id: string;
 };

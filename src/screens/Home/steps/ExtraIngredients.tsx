@@ -72,8 +72,8 @@ export function ExtraIngredients({
         </PriceContent>
       </PriceCard>
       <ActionButtons>
-        <SecondaryButton label="Back" onPress={goBack} />
-        <PrimaryButton
+        <BackButton label="Back" onPress={goBack} />
+        <NextButton
           label="Next"
           onPress={handleSubmit}
           RightIcon={<ArrowRight />}
@@ -99,4 +99,11 @@ const ActionButtons = styled.View`
   flex-direction: row;
   gap: 10px;
   margin-top: 30px;
+`;
+
+const BackButton = styled(SecondaryButton)`
+  width: 50%;
+`;
+const NextButton = styled(PrimaryButton)`
+  width: 50%;
 `;
