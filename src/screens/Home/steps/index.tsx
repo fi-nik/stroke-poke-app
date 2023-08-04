@@ -40,7 +40,7 @@ function convertToMap<T extends { id: string | number }>(items: T[]) {
   return map;
 }
 
-export const Steps = ({
+export function Steps ({
   bowlData,
   bowlOptions,
   baseOptions,
@@ -48,7 +48,7 @@ export const Steps = ({
   sauceOptions,
   ingredientOptions,
   extraIngredientsOptions,
-}: Props) => {
+}: Props) {
   const [currentStep, setCurrentStep] = useState(0);
   const goBack = useCallback(
     () => setCurrentStep(current => current - 1),

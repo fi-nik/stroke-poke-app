@@ -7,7 +7,7 @@ import { Favorite } from 'src/types';
 
 import { FavoriteItem } from './FavoriteItem';
 
-export const FavoritesScreen = () => {
+export function FavoritesScreen() {
   const favorites = useFavorites();
   const renderItem = useCallback(
     ({ item }: { item: Favorite }) => <FavoriteItem item={item} />,
@@ -25,4 +25,4 @@ export const FavoritesScreen = () => {
       />
     </ScreenWrapper>
   );
-};
+}

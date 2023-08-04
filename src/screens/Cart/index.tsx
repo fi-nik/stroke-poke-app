@@ -16,7 +16,7 @@ import styled, { useTheme } from 'styled-components/native';
 import { CartItem } from './CardItem';
 import { EmptyCart } from './EmptyCart';
 
-export const CartScreen = ({ navigation }) => {
+export function CartScreen({ navigation }) {
   const theme = useTheme();
   const cart = useCart();
 
@@ -71,7 +71,7 @@ export const CartScreen = ({ navigation }) => {
       )}
     </ScreenWrapper>
   );
-};
+}
 
 const CardWrapper = styled(Card)`
   margin-top: 15px;

@@ -29,15 +29,6 @@ export type Bowl = {
   imagePath: string;
 };
 
-export type Order = {
-  bowlId: string;
-  sizeId: string;
-  baseId: string;
-  sauceId: string;
-  ingredients: string[];
-  extraIngredients: string[];
-};
-
 export type Ingredient = {
   id: number;
   name: string;
@@ -70,10 +61,15 @@ export type Response<T> = {
     totalItems: number;
   };
 };
+
 export enum QueryKey {
-  favorites = 'favorites',
-  sizes = 'sizes',
-  bases = 'bases',
+  Favorites = 'favorites',
+  Sizes = 'sizes',
+  Bases = 'bases',
+  Sauces = 'sauces',
+  Bowls = 'bowls',
+  Ingredients = 'ingredients',
+  ExtraIngredients = 'extra_ingredients',
 }
 export class BowlData {
   constructor() {

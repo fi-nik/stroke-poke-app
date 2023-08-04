@@ -46,7 +46,7 @@ type Values = Record<
 > &
   Record<SectionKeys.BowlIngredients, Record<string, OptionValue>>;
 
-export function useBowlDetailsForm({ onSubmit, initialValues }) {
+export const useBowlDetailsForm = ({ onSubmit, initialValues }) => {
   const {
     setFieldValue,
     touched,
@@ -142,4 +142,4 @@ export function useBowlDetailsForm({ onSubmit, initialValues }) {
     selectedSize,
     handleSubmit,
   };
-}
+};

@@ -1,4 +1,4 @@
-import {Cart, ExtraIngredient, Size} from 'src/types';
+import { Cart, ExtraIngredient, Size } from 'src/types';
 
 export function formatPrice(price: number) {
   return Math.floor(price * 100) / 100;

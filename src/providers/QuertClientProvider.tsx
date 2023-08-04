@@ -5,33 +5,34 @@ import ExtraIngredientService from 'src/services/extraIngredientService';
 import IngredientService from 'src/services/ingredientService';
 import SauceService from 'src/services/sauceService';
 import SizeService from 'src/services/sizeService';
+import { QueryKey } from 'src/types';
 
 const queryClient = new QueryClient();
 
 const prefetchData = async () => {
   // The results of this query will be cached like a normal query
   await queryClient.prefetchQuery({
-    queryKey: ['sizes'],
+    queryKey: [QueryKey.Sizes],
     queryFn: () => SizeService.getSizes(),
   });
   await queryClient.prefetchQuery({
-    queryKey: ['bowls'],
+    queryKey: [QueryKey.Bowls],
     queryFn: () => BowlService.getBowls(),
   });
   await queryClient.prefetchQuery({
-    queryKey: ['bases'],
+    queryKey: [QueryKey.Bases],
     queryFn: () => BaseService.getBases(),
   });
   await queryClient.prefetchQuery({
-    queryKey: ['sauces'],
+    queryKey: [QueryKey.Sauces],
     queryFn: () => SauceService.getSauces(),
   });
   await queryClient.prefetchQuery({
-    queryKey: ['ingredients'],
+    queryKey: [QueryKey.Ingredients],
     queryFn: () => IngredientService.getIngredients(),
   });
   await queryClient.prefetchQuery({
-    queryKey: ['extraIngredient'],
+    queryKey: [QueryKey.ExtraIngredients],
     queryFn: () => ExtraIngredientService.getExtraIngredients(),
   });
 };
