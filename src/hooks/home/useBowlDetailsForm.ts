@@ -48,7 +48,6 @@ type Values = Record<
 
 export const useBowlDetailsForm = ({ onSubmit, initialValues }) => {
   const {
-
     setFieldValue,
     touched,
     values,
