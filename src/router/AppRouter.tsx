@@ -1,39 +1,24 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Button, View } from 'react-native';
+import { LocationsScreen } from 'screens/Locations';
+import { DrawerContent } from 'src/components/DrawerContent';
 import { TabNavigator } from 'src/router/TabNavigator';
 import { AppRoutes } from 'src/router/types';
-
+import { useTheme } from 'styled-components/native';
 const Drawer = createDrawerNavigator();
 
-function CustomDrawerContent({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        title={'Go somewhere'}
-        onPress={() => {
-          // Navigate using the `navigation` prop that you received
-          navigation.navigate('SomeScreen');
-        }}
-      />
-    </View>
-  );
-}
 export function AppNavigator() {
+  const theme = useTheme();
   return (
     <Drawer.Navigator
-      drawerContent={CustomDrawerContent}
+      drawerContent={DrawerContent}
       screenOptions={() => ({
         drawerPosition: 'right',
-        drawerActiveTintColor: 'red',
+        drawerActiveTintColor: theme.colors.primary,
         headerShown: false,
+        drawerLabel: '',
       })}>
-      <Drawer.Screen
-        name={AppRoutes.Tab}
-        component={TabNavigator}
-        options={{
-          drawerLabel: '',
-        }}
-      />
+      <Drawer.Screen name={AppRoutes.Tab} component={TabNavigator} />
+      <Drawer.Screen name={AppRoutes.Locations} component={LocationsScreen} />
     </Drawer.Navigator>
   );
 }

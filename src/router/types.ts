@@ -11,6 +11,7 @@ export enum TabRoutes {
 }
 export enum AppRoutes {
   Tab = 'Tab',
+  Locations = 'Locations',
 }
 export enum CartRoutes {
   Cart = 'Cart',
@@ -22,6 +23,7 @@ export type AppNavigatorParamList = {
     screen: TabRoutes;
     params: any;
   };
+  [AppRoutes.Locations]: undefined;
 };
 export type TabNavigatorParamList = {
   [TabRoutes.Home]: {
