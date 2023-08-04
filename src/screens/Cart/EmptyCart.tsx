@@ -9,6 +9,7 @@ import {
   CartStackScreenNavigationProp,
   TabRoutes,
 } from 'src/router/types';
+
 export function EmptyCart() {
   const navigation =
     useNavigation<
@@ -23,7 +24,7 @@ export function EmptyCart() {
         </Body>
       </CardContent>
       <PrimaryButton
-        label="Add order "
+        label="Add order"
         onPress={() => navigation.navigate(TabRoutes.Home)}
       />
     </Card>

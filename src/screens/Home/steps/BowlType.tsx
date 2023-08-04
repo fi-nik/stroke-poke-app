@@ -6,10 +6,8 @@ import { Flex } from 'src/components/layout';
 import { Options } from 'src/components/options/Options';
 import { Option, OptionConfig } from 'src/components/options/types';
 import { useBowlTypeForm } from 'src/hooks/home';
-import { Bowl } from 'src/types';
+import { Bowl, SectionKeys } from 'src/types';
 import styled from 'styled-components/native';
-
-import { SectionKeys } from 'src/types';
 
 type Props = {
   onConfirm: (selectedBowl: Bowl) => void;

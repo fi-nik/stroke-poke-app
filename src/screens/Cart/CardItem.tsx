@@ -40,7 +40,7 @@ export const CartItem = memo(({ item }: { item: BowlOrder }) => {
                 : actions.addFavorite(item)
             }
           />
-          <DeleteButton
+          <IconButton
             type="secondary"
             Icon={<TrashIcon />}
             onPress={() => actions.removeBowl(item.id)}
@@ -75,8 +75,6 @@ const CardWrapper = styled(Card)`
 const FavoriteButton = styled(IconButton)`
   margin-right: 15px;
 `;
-
-const DeleteButton = styled(IconButton)``;
 
 const SummaryActions = styled.View`
   flex-shrink: 1;

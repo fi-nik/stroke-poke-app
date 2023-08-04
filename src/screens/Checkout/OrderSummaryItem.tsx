@@ -1,12 +1,12 @@
+import { View } from 'react-native';
 import { FlexRow } from 'src/components/layout';
 import { Body } from 'src/components/text/Body';
 import { BowlOrder } from 'src/types';
 import { formatPrice } from 'src/utils/price';
 import styled from 'styled-components/native';
-
 export function OrderSummaryItem({ order }: { order: BowlOrder }) {
   return (
-    <Wrapper key={order.id}>
+    <View key={order.id}>
       <FlexRow>
         <ContentArea>
           <Body>{order.type.name}</Body>
@@ -31,11 +31,9 @@ export function OrderSummaryItem({ order }: { order: BowlOrder }) {
           </FlexRow>
         ))}
       </ExtraIngredientsArea>
-    </Wrapper>
+    </View>
   );
 }
-
-const Wrapper = styled.View``;
 
 const ContentArea = styled.View`
   width: 50%;

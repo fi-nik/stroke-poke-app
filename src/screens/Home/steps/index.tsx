@@ -1,8 +1,4 @@
 import { useState, useCallback } from 'react';
-import { BowlDetails } from 'screens/Home/steps/BowlDetails';
-import { BowlSummary } from 'screens/Home/steps/BowlSummary';
-import { BowlType } from 'screens/Home/steps/BowlType';
-import { ExtraIngredients } from 'screens/Home/steps/ExtraIngredients';
 import { ScreenWrapper } from 'src/components/ScreenWrapper';
 import { StepCounter } from 'src/components/StepCounter';
 import { Option } from 'src/components/options/types';
@@ -16,12 +12,18 @@ import {
   Size,
 } from 'src/types';
 
+import { BowlDetails } from './BowlDetails';
+import { BowlSummary } from './BowlSummary';
+import { BowlType } from './BowlType';
+import { ExtraIngredients } from './ExtraIngredients';
+
 type BowlDetailsData = {
   [SectionKeys.BowlSize]: Size;
   [SectionKeys.BowlBase]: Base;
   [SectionKeys.BowlSauce]: Sauce;
   [SectionKeys.BowlIngredients]: Record<string, Ingredient>;
 };
+
 type Props = {
   bowlData: BowlData;
   bowlOptions: Option[];
@@ -71,12 +73,12 @@ export const Steps = ({
           initialValue={bowlType}
           options={bowlOptions}
           onConfirm={selectedBowlType => {
-            /*TODO: Add logic to save selected option to state */
             setBowlType(selectedBowlType);
             setCurrentStep(1);
           }}
         />
       )}
+
       {currentStep === 1 && (
         <BowlDetails
           initialValues={bowlDetails}
@@ -91,6 +93,7 @@ export const Steps = ({
           ingredientOptions={ingredientOptions}
         />
       )}
+
       {currentStep === 2 && (
         <ExtraIngredients
           initialValues={extraIngredients}
@@ -103,6 +106,7 @@ export const Steps = ({
           }}
         />
       )}
+
       {currentStep === 3 && (
         <BowlSummary
           bowlData={{

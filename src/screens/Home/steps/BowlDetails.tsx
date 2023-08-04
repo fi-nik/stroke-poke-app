@@ -7,9 +7,8 @@ import { Flex, FlexShrink } from 'src/components/layout';
 import { Options } from 'src/components/options/Options';
 import { OptionConfig } from 'src/components/options/types';
 import { useBowlDetailsForm } from 'src/hooks/home';
+import { SectionKeys } from 'src/types';
 import styled from 'styled-components/native';
-
-import { SectionKeys} from 'src/types';
 
 export function BowlDetails({
   sizeOptions,
@@ -99,9 +98,11 @@ const ActionButtons = styled.View`
   gap: 10px;
   margin-top: 30px;
 `;
+
 const BackButton = styled(SecondaryButton)`
   width: 50%;
 `;
+
 const NextButton = styled(PrimaryButton)`
   width: 50%;
 `;

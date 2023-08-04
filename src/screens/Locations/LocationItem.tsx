@@ -4,6 +4,7 @@ import { LocationIcon } from 'src/components/icons/Location';
 import { FlexRow } from 'src/components/layout';
 import { Body } from 'src/components/text/Body';
 import styled from 'styled-components/native';
+
 export function LocationItem({ town, address, id }) {
   return (
     <Card key={id}>
@@ -19,6 +20,7 @@ export function LocationItem({ town, address, id }) {
 const AddressArea = styled(FlexRow)`
   margin-top: 10px;
 `;
+
 const Address = styled(Body)`
   margin-left: 10px;
 `;

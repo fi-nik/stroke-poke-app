@@ -32,6 +32,7 @@ const validationSchema = yup.object().shape({
     .required('Please select payment method'),
   note: yup.string().max(300, 'Note cannot be longer then 300 letters'),
 });
+
 const paymentOptions = [
   {
     label: 'Cash',
@@ -42,6 +43,7 @@ const paymentOptions = [
     value: 'card',
   },
 ];
+
 export function CheckoutScreen({ navigation }) {
   const cart = useCart();
   const theme = useTheme();
@@ -59,21 +61,23 @@ export function CheckoutScreen({ navigation }) {
     validationSchema,
     onSubmit: () => {
       const data = cart.map(order => ({
-        bowlId: '' + order.type.id,
-        sizeId: '' + order.size.id,
-        baseId: '' + order.base.id,
-        sauceId: '' + order.sauce.id,
-        ingredients: order.ingredients.map(ingredient => '' + ingredient.id),
+        bowlId: `${order.type.id}`,
+        sizeId: `${order.size.id}`,
+        baseId: `${order.base.id}`,
+        sauceId: `${order.sauce.id}`,
+        ingredients: order.ingredients.map(ingredient => `${ingredient.id}`),
         extraIngredients: order.extraIngredients.map(
-          ingredient => '' + ingredient.id,
+          ingredient => `${ingredient.id}`,
         ),
       }));
+
       createOrder(data).then(() => {
         navigation.goBack();
         navigation.navigate(TabRoutes.Home, { data: new BowlData() });
       });
     },
   });
+
   return (
     <ScreenWrapper>
       <Title>Delivery details</Title>
@@ -149,6 +153,7 @@ const Input = styled(TextInput)`
 const SelectInput = styled(Select)`
   margin-bottom: 20px;
 `;
+
 const BackButton = styled(SecondaryButton)`
   margin-top: 30px;
 `;

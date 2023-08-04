@@ -1,7 +1,5 @@
 import React, { useCallback } from 'react';
 import { FlatList } from 'react-native';
-import { CartItem } from 'screens/Cart/CardItem';
-import { EmptyCart } from 'screens/Cart/EmptyCart';
 import { Card } from 'src/components/Card';
 import { ScreenTitle } from 'src/components/ScreenTitle';
 import { ScreenWrapper } from 'src/components/ScreenWrapper';
@@ -15,13 +13,17 @@ import { BowlData, BowlOrder } from 'src/types';
 import { getCartTotal } from 'src/utils/price';
 import styled, { useTheme } from 'styled-components/native';
 
+import { CartItem } from './CardItem';
+import { EmptyCart } from './EmptyCart';
+
 export const CartScreen = ({ navigation }) => {
+  const theme = useTheme();
   const cart = useCart();
+
   const renderItem = useCallback(
     ({ item }: { item: BowlOrder }) => <CartItem key={item.id} item={item} />,
     [],
   );
-  const theme = useTheme();
   const navigateToHome = useCallback(
     () => navigation.navigate(TabRoutes.Home, { data: new BowlData() }),
     [navigation],
@@ -32,6 +34,7 @@ export const CartScreen = ({ navigation }) => {
   }, [navigation, cart]);
 
   const { subtotal, currency } = getCartTotal(cart);
+
   return (
     <ScreenWrapper>
       <ScreenTitle>Cart</ScreenTitle>

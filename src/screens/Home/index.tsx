@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Steps } from 'screens/Home/steps';
 import {
   useBowlDetailsOptions,
   useBowlOptions,
   useExtraIngredientOptions,
 } from 'src/hooks/home';
 import { BowlData } from 'src/types';
+
+import { Steps } from './steps';
 
 export const HomeScreen = ({ route }) => {
   /* TODO: Fetch all options at once */
@@ -20,6 +21,7 @@ export const HomeScreen = ({ route }) => {
   }, [route]);
 
   const [initialBowlData, setInitialBowlData] = useState(new BowlData());
+
   return (
     <Steps
       key={initialBowlData.id}

@@ -33,6 +33,7 @@ export function ExtraIngredients({
     onSubmit: onConfirm,
     initialValues,
   });
+
   const data = [
     {
       key: SectionKeys.ExtraIngredients,
@@ -102,6 +103,7 @@ const ActionButtons = styled.View`
 const BackButton = styled(SecondaryButton)`
   width: 50%;
 `;
+
 const NextButton = styled(PrimaryButton)`
   width: 50%;
 `;

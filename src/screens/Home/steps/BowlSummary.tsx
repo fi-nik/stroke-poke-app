@@ -33,6 +33,7 @@ export function BowlSummary({ bowlData }: Props) {
   const theme = useTheme();
   const actions = useFavoriteActions();
   const favorite = useFavorite(favoriteId);
+
   const addToFavorites = () => {
     if (favorite) {
       actions.removeFavorite(favorite.id);
@@ -42,6 +43,7 @@ export function BowlSummary({ bowlData }: Props) {
       setFavoriteId(favoriteId);
     }
   };
+
   const addToCart = useCallback(() => {
     actions.addToCart({
       base,
@@ -62,6 +64,7 @@ export function BowlSummary({ bowlData }: Props) {
     type,
     actions,
   ]);
+
   const goToCheckout = useCallback(
     () => navigation.navigate(TabRoutes.Cart, { screen: CartRoutes.Checkout }),
     [navigation],
@@ -157,6 +160,7 @@ const FavoriteButton = styled(IconButton)`
 const CartButton = styled(PrimaryButton)`
   flex-grow: 1;
 `;
+
 const CheckoutButton = styled(SecondaryButton)`
   margin-top: 15px;
 `;
