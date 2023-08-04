@@ -4,10 +4,9 @@ import { Toast } from 'src/modules/Toast';
 import OrderService from 'src/services/orderService';
 import { cartActions } from 'src/store';
 import { UserOrder } from 'src/types';
-import { useTheme } from 'styled-components/native';
+
 export function useCreateOrder() {
   const dispatch = useDispatch();
-  const theme = useTheme();
   return useCallback(
     (data: UserOrder) => {
       return OrderService.createOrder(data)

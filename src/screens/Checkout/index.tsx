@@ -58,7 +58,7 @@ export function CheckoutScreen({ navigation }) {
       payment: null,
       note: '',
     },
-    // validationSchema,
+    validationSchema,
     onSubmit: () => {
       const data = cart.map(order => ({
         bowlId: null,

@@ -39,31 +39,15 @@ export function BowlSummary({ bowlData }: Props) {
       actions.removeFavorite(favorite.id);
       setFavoriteId(null);
     } else {
-      const favoriteId = actions.addFavorite(bowlData);
+      const favoriteId = actions.addFavorite(bowlData, true);
       setFavoriteId(favoriteId);
     }
   };
 
   const addToCart = useCallback(() => {
-    actions.addToCart({
-      base,
-      size,
-      extraIngredients,
-      ingredients,
-      sauce,
-      type,
-    });
+    actions.addToCart(bowlData);
     navigation.navigate(TabRoutes.Home, { data: new BowlData() });
-  }, [
-    navigation,
-    base,
-    size,
-    extraIngredients,
-    ingredients,
-    sauce,
-    type,
-    actions,
-  ]);
+  }, [navigation, actions, bowlData]);
 
   const goToCheckout = useCallback(
     () => navigation.navigate(TabRoutes.Cart, { screen: CartRoutes.Checkout }),

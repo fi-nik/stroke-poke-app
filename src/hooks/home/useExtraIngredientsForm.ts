@@ -10,7 +10,6 @@ export const useExtraIngredientsForm = ({
   initialValues: ExtraIngredient[];
   onSubmit: (values: ExtraIngredient[]) => void;
 }) => {
-  console.log('initialValues', initialValues);
   const { setFieldValue, values, handleSubmit } = useFormik<{
     [SectionKeys.ExtraIngredients]: Record<string, ExtraIngredient>;
   }>({

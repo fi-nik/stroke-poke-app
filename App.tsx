@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
+import { RootSiblingParent } from 'react-native-root-siblings';
+import { theme } from 'src/modules/Theme';
 import { QueryProvider } from 'src/providers/QuertClientProvider';
 import { AppNavigator } from 'src/router/AppRouter';
 import 'react-native-gesture-handler';
 import { StoreProvider } from 'src/store';
 import styled, { ThemeProvider } from 'styled-components/native';
-import { RootSiblingParent } from 'react-native-root-siblings';
-import { theme } from 'src/modules/Theme';
 
 export default function App() {
   return (

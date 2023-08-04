@@ -28,7 +28,7 @@ export function OrderSummary({ cart }: Props) {
       <CardTitle title={'Order summary'} />
       <Summary>
         {cart.map(order => (
-          <OrderSummaryItem order={order} />
+          <OrderSummaryItem key={order.id} order={order} />
         ))}
         <FreeDeliveryText>Free delivery</FreeDeliveryText>
         <SplitLine />
