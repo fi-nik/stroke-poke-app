@@ -1,7 +1,9 @@
-import { TextInputProps } from 'react-native';
-import { Error } from 'src/components/Error';
-import { Caption } from 'src/components/text/Caption';
+import { TextInputProps, View } from 'react-native';
 import styled, { useTheme } from 'styled-components/native';
+
+import { Error } from '../Error';
+import { Caption } from '../text/Caption';
+
 type Props = {
   label: string;
   error?: string;
@@ -20,7 +22,7 @@ export function TextInput({
 }: Props) {
   const theme = useTheme();
   return (
-    <Wrapper style={style}>
+    <View>
       <Label>
         {label}
         {required ? <Caption colour={theme.colors.primary}>*</Caption> : ''}
@@ -32,11 +34,10 @@ export function TextInput({
         error={error}
       />
       {error && <Error>{error}</Error>}
-    </Wrapper>
+    </View>
   );
 }
 
-const Wrapper = styled.View``;
 const Label = styled(Caption)`
   margin-bottom: 8px;
 `;

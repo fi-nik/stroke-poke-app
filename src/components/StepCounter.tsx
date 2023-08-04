@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Body } from 'src/components/text/Body';
 import styled from 'styled-components/native';
+
+import { Body } from './text/Body';
 
 export function StepCounter({ current, size }) {
   const [steps] = useState(

@@ -1,10 +1,11 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { ViewStyle } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
-import { Error } from 'src/components/Error';
-import { Body } from 'src/components/text/Body';
-import { Caption } from 'src/components/text/Caption';
 import styled, { useTheme } from 'styled-components/native';
+
+import { Error } from '../Error';
+import { Caption } from '../text/Caption';
+
 type Props = {
   options: { value: string; label: string }[];
   label: string;
@@ -40,12 +41,13 @@ export function Select({
           onValueChange={value => onChange(value)}
         />
       </SelectInput>
-      {error && <Error>{'*' + error}</Error>}
+      {error ? <Error>{'*' + error}</Error> : null}
     </Wrapper>
   );
 }
 
 const Wrapper = styled.View``;
+
 const Label = styled(Caption)`
   margin-bottom: 8px;
 `;

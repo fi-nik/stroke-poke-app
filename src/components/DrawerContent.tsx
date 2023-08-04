@@ -20,9 +20,11 @@ export function DrawerContent({ navigation }) {
     </SafeArea>
   );
 }
+
 const SafeArea = styled.SafeAreaView`
   flex: 1;
 `;
+
 const Wrapper = styled.View`
   flex: 1;
   margin: 120px 30px;

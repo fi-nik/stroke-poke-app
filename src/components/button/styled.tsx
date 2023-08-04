@@ -1,5 +1,6 @@
-import { Caption } from 'src/components/text/Caption';
 import styled from 'styled-components/native';
+
+import { Caption } from '../text/Caption';
 
 export const ButtonWrapper = styled.TouchableOpacity`
   border-radius: 4px;

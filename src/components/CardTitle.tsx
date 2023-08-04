@@ -1,5 +1,7 @@
-import { Headline } from 'src/components/text/Headline';
 import styled from 'styled-components/native';
+
+import { Headline } from './text/Headline';
+
 export const CardTitle = ({
   title,
   price,
@@ -9,7 +11,7 @@ export const CardTitle = ({
 }) => (
   <Wrapper>
     <Headline>{title}</Headline>
-    {price && <Headline>{price}</Headline>}
+    {price ? <Headline>{price}</Headline> : null}
   </Wrapper>
 );
 

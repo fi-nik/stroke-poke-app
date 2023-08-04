@@ -8,15 +8,16 @@ const Drawer = createDrawerNavigator();
 
 export function AppNavigator() {
   const theme = useTheme();
+
   return (
     <Drawer.Navigator
       drawerContent={DrawerContent}
-      screenOptions={() => ({
+      screenOptions={{
         drawerPosition: 'right',
         drawerActiveTintColor: theme.colors.primary,
         headerShown: false,
         drawerLabel: '',
-      })}>
+      }}>
       <Drawer.Screen name={AppRoutes.Tab} component={TabNavigator} />
       <Drawer.Screen name={AppRoutes.Locations} component={LocationsScreen} />
     </Drawer.Navigator>

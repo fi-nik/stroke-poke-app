@@ -1,5 +1,6 @@
-import { Caption } from 'src/components/text/Caption';
 import { useTheme } from 'styled-components';
+
+import { Caption } from '../text/Caption';
 
 export function OptionError({ children }) {
   const theme = useTheme();

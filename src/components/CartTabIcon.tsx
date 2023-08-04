@@ -3,6 +3,7 @@ import { useCartNumber } from 'src/hooks/cart/useCartNumber';
 import styled from 'styled-components/native';
 
 import { CartIcon } from './icons/Cart';
+
 type Props = {
   setBadgeNumber: (number) => void;
   fill: string;
@@ -19,11 +20,5 @@ export function CartTab({ fill, setBadgeNumber }: Props) {
     }
   }, [number, current, setBadgeNumber]);
 
-  return (
-    <Wrapper>
-      <CartIcon fill={fill} />
-    </Wrapper>
-  );
+  return <CartIcon fill={fill} />;
 }
-
-const Wrapper = styled.View``;

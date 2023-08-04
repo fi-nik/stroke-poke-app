@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 import { SectionList } from 'react-native';
-import { OptionError } from 'src/components/options/OptionError';
-import { OptionItem } from 'src/components/options/OptionItem';
-import { OptionsTitle } from 'src/components/options/OptionsTitle';
-import { Body } from 'src/components/text/Body';
 import styled from 'styled-components/native';
 
+import { OptionError } from './OptionError';
+import { OptionItem } from './OptionItem';
+import { OptionsTitle } from './OptionsTitle';
 import { Option, OptionConfig, OptionConfigKey, OptionValue } from './types';
+import { Body } from '../text/Body';
 
 type Props = {
   options: OptionConfig[];
@@ -32,6 +32,7 @@ export function Options({ options, selectedOptions }: Props) {
       const selected = multiselect
         ? selectedOptions[key] && selectedOptions[key][option.value.id]
         : selectedOptions[key]?.id === option.value.id;
+
       return (
         <OptionItemWrapper
           addSeparator={index < data.length - 1}
@@ -55,7 +56,7 @@ export function Options({ options, selectedOptions }: Props) {
     ({ section: { title, description } }: { section: OptionConfig }) => (
       <OptionsHeader>
         <OptionsTitle>{title}</OptionsTitle>
-        {description && <Body>{description}</Body>}
+        {description ? <Body>{description}</Body> : null}
       </OptionsHeader>
     ),
     [],
@@ -76,27 +77,26 @@ export function Options({ options, selectedOptions }: Props) {
   );
 
   return (
-    <Wrapper>
-      <SectionList
-        initialNumToRender={25}
-        bounces={false}
-        sections={options}
-        renderSectionFooter={renderSectionFooter}
-        renderSectionHeader={renderSectionHeader}
-        renderItem={renderItem}
-      />
-    </Wrapper>
+    <SectionList
+      initialNumToRender={25}
+      bounces={false}
+      sections={options}
+      renderSectionFooter={renderSectionFooter}
+      renderSectionHeader={renderSectionHeader}
+      renderItem={renderItem}
+    />
   );
 }
 
-const Wrapper = styled.View``;
 const OptionsHeader = styled.View`
   margin-bottom: 20px;
   background-color: ${({ theme }) => theme.colors.white};
 `;
+
 const OptionItemWrapper = styled.View<{ addSeparator: boolean }>`
   margin-bottom: ${({ addSeparator }) => (addSeparator ? 16 : 0)}px;
 `;
+
 const SectionSeparator = styled.View`
   margin-top: 30px;
 `;

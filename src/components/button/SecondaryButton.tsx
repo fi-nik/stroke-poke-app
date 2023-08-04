@@ -1,10 +1,7 @@
 import { ReactElement } from 'react';
-import {
-  ButtonLabel,
-  ButtonWrapper,
-  RightIconWrapper,
-} from 'src/components/button/styled';
 import styled from 'styled-components/native';
+
+import { ButtonLabel, ButtonWrapper, RightIconWrapper } from './styled';
 
 type Props = {
   label: string;

@@ -1,11 +1,8 @@
 import { ReactElement } from 'react';
-import { TouchableHighlightProps, View } from 'react-native';
-import {
-  ButtonLabel,
-  ButtonWrapper,
-  RightIconWrapper,
-} from 'src/components/button/styled';
+import { TouchableHighlightProps } from 'react-native';
 import styled, { useTheme } from 'styled-components/native';
+
+import { ButtonLabel, ButtonWrapper, RightIconWrapper } from './styled';
 
 type Props = Omit<TouchableHighlightProps, 'onPress'> & {
   label: string;
@@ -25,7 +22,9 @@ export function PrimaryButton({
 
   return (
     <Wrapper {...buttonProps} onPress={onPress} background={background}>
-      <ButtonLabel bold colour={theme.colors.white}>{label}</ButtonLabel>
+      <ButtonLabel bold colour={theme.colors.white}>
+        {label}
+      </ButtonLabel>
       {!!RightIcon && <RightIconWrapper>{RightIcon}</RightIconWrapper>}
     </Wrapper>
   );

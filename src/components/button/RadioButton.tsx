@@ -1,8 +1,9 @@
 import { GestureResponderEvent } from 'react-native';
-import { RadioCircleIcon } from 'src/components/icons/RadioCircle';
-import { Body } from 'src/components/text/Body';
 import { useTheme } from 'styled-components';
 import styled from 'styled-components/native';
+
+import { RadioCircleIcon } from '../icons/RadioCircle';
+import { Body } from '../text/Body';
 
 type Props = {
   checked: boolean;
@@ -26,12 +27,10 @@ export function RadioButton({
         fillColor={theme.colors.primary}
         filled={checked}
       />
-      <StyledBody
-        bold
-        colour={checked ? theme.colors.primary : theme.colors.black}>
+      <Label bold colour={checked ? theme.colors.primary : theme.colors.black}>
         {label}
-      </StyledBody>
-      {description && <Body>{` (${description})`}</Body>}
+      </Label>
+      {description ? <Body>{` (${description})`}</Body> : null}
     </Wrapper>
   );
 }
@@ -40,6 +39,7 @@ const Wrapper = styled.TouchableOpacity<{ disabled: boolean }>`
   flex-direction: row;
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 `;
-const StyledBody = styled(Body)`
+
+const Label = styled(Body)`
   margin-left: 16px;
 `;

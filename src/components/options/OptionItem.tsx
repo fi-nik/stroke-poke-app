@@ -1,8 +1,8 @@
 import React, { memo, useCallback } from 'react';
-import { Checkbox } from 'src/components/button/Checkbox';
-import { RadioButton } from 'src/components/button/RadioButton';
 
 import { OptionValue } from './types';
+import { Checkbox } from '../button/Checkbox';
+import { RadioButton } from '../button/RadioButton';
 
 type Props = {
   type: 'radio' | 'checkbox';
@@ -13,6 +13,7 @@ type Props = {
   selected: boolean;
   disabled?: boolean;
 };
+
 export const OptionItem = memo(
   ({
     type,

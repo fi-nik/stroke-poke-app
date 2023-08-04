@@ -1,8 +1,9 @@
 import { GestureResponderEvent } from 'react-native';
-import { CheckboxIcon } from 'src/components/icons/Checkbox';
-import { Body } from 'src/components/text/Body';
 import { useTheme } from 'styled-components';
 import styled from 'styled-components/native';
+
+import { CheckboxIcon } from '../icons/Checkbox';
+import { Body } from '../text/Body';
 
 type Props = {
   checked: boolean;
@@ -33,6 +34,7 @@ const Wrapper = styled.TouchableOpacity<{ disabled: boolean }>`
   flex-direction: row;
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 `;
+
 const StyledBody = styled(Body)`
   margin-left: 8px;
 `;

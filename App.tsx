@@ -1,11 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { QueryProvider } from 'src/providers/QuertClientProvider';
 import { AppNavigator } from 'src/router/AppRouter';
 import 'react-native-gesture-handler';
 import { StoreProvider } from 'src/store';
-import { ThemeProvider } from 'styled-components/native';
-import { QueryProvider } from 'src/providers/QuertClientProvider';
+import styled, { ThemeProvider } from 'styled-components/native';
 
 const theme = {
   colors: {
@@ -18,6 +17,7 @@ const theme = {
     },
   },
 };
+
 export default function App() {
   return (
     <StoreProvider>
@@ -34,16 +34,14 @@ export default function App() {
 
 const AppContent = () => {
   return (
-    <View style={styles.container}>
+    <Container>
       <StatusBar style="auto" />
       <AppNavigator />
-    </View>
+    </Container>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
+const Container = styled.View`
+  flex: 1;
+  background-color: ${({ theme }) => theme.colors.white};
+`;
