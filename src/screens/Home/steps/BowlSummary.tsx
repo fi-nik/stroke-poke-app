@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native';
 import { Card } from 'src/components/Card';
 import { CardContent } from 'src/components/CardContent';
 import { CardTitle } from 'src/components/CardTitle';
+import { RowWithPrice } from 'src/components/RowWithPrice';
 import { IconButton } from 'src/components/button/IconButton';
 import { PrimaryButton } from 'src/components/button/PrimaryButton';
 import { SecondaryButton } from 'src/components/button/SecondaryButton';
@@ -13,39 +14,20 @@ import { Body } from 'src/components/text/Body';
 import { Headline } from 'src/components/text/Headline';
 import { useFavorite, useFavoriteActions } from 'src/hooks/favorites';
 import {
-  TabNavigatorParamList,
+  CartRoutes,
   TabRoutes,
   TabScreenNavigationProp,
 } from 'src/router/types';
-import {
-  Base,
-  Bowl,
-  ExtraIngredient,
-  Favorite,
-  Ingredient,
-  Sauce,
-  Size,
-} from 'src/types';
+import { BowlData } from 'src/types';
 import { calculatePrice } from 'src/utils/price';
 import styled, { useTheme } from 'styled-components/native';
 
 type Props = {
-  type: Bowl;
-  size: Size;
-  base: Base;
-  sauce: Sauce;
-  ingredients: Ingredient[];
-  extraIngredients: ExtraIngredient[];
+  bowlData: BowlData;
 };
 
-export function BowlSummary({
-  type,
-  size,
-  base,
-  sauce,
-  ingredients,
-  extraIngredients,
-}: Props) {
+export function BowlSummary({ bowlData }: Props) {
+  const { type, size, base, sauce, ingredients, extraIngredients } = bowlData;
   const navigation = useNavigation<TabScreenNavigationProp<TabRoutes.Home>>();
   const [favoriteId, setFavoriteId] = useState(null);
   const theme = useTheme();
@@ -56,14 +38,7 @@ export function BowlSummary({
       actions.removeFavorite(favorite.id);
       setFavoriteId(null);
     } else {
-      const favoriteId = actions.addFavorite({
-        base,
-        size,
-        extraIngredients,
-        ingredients,
-        sauce,
-        type,
-      });
+      const favoriteId = actions.addFavorite(bowlData);
       setFavoriteId(favoriteId);
     }
   };
@@ -76,7 +51,7 @@ export function BowlSummary({
       sauce,
       type,
     });
-    navigation.navigate(TabRoutes.Home, { data: new Favorite() });
+    navigation.navigate(TabRoutes.Home, { data: new BowlData() });
   }, [
     navigation,
     base,
@@ -87,7 +62,10 @@ export function BowlSummary({
     type,
     actions,
   ]);
-  const goToCheckout = useCallback(() => null, []);
+  const goToCheckout = useCallback(
+    () => navigation.navigate(TabRoutes.Cart, { screen: CartRoutes.Checkout }),
+    [navigation],
+  );
   const price = calculatePrice(size, extraIngredients);
 
   return (
@@ -152,11 +130,6 @@ export function BowlSummary({
     </Flex>
   );
 }
-
-const RowWithPrice = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-`;
 
 const ExtraIngredientRow = styled(RowWithPrice)`
   margin-bottom: 15px;

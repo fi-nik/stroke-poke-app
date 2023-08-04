@@ -2,6 +2,7 @@ import {
   addBowl,
   decrementBowl,
   removeBowl,
+  cleanCart,
   incrementBowl,
 } from './slices/cart';
 import { removeFavorite, addFavorite } from './slices/favorites';
@@ -15,6 +16,7 @@ export const cartActions = {
   addBowl,
   decrementBowl,
   removeBowl,
+  cleanCart,
   incrementBowl,
 };
 export { StoreProvider } from './provider';

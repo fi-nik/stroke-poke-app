@@ -4,8 +4,8 @@ import { Logo } from 'src/components/Logo';
 import { FavoriteIcon } from 'src/components/icons/Favorites';
 import { HomeIcon } from 'src/components/icons/Home';
 import { MenuIcon } from 'src/components/icons/Menu';
-import { Cart } from 'src/screens/Cart';
-import { Favorites } from 'src/screens/Favorites';
+import { CartNavigator } from 'src/router/CartNavigator';
+import { FavoritesScreen } from 'src/screens/Favorites';
 import { HomeScreen } from 'src/screens/Home';
 import { useTheme } from 'styled-components';
 
@@ -38,7 +38,7 @@ export function TabNavigator() {
       />
       <Tab.Screen
         name={TabRoutes.Favorites}
-        component={Favorites}
+        component={FavoritesScreen}
         options={{
           tabBarLabel: 'Favorites',
           tabBarIcon: ({ color }) => <FavoriteIcon fill={color} />,
@@ -46,7 +46,7 @@ export function TabNavigator() {
       />
       <Tab.Screen
         name={TabRoutes.Cart}
-        component={Cart}
+        component={CartNavigator}
         options={({ navigation }) => ({
           tabBarLabel: 'Cart',
           tabBarIcon: ({ color }) => (

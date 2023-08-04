@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { TabScreenNavigationProp, TabRoutes } from 'src/router/types';
 import { favoriteActions, cartActions } from 'src/store';
-import {BowlData, BowlOrder, Favorite} from 'src/types';
+import { BowlData, Favorite } from 'src/types';
 
 export const useFavoriteActions = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export const useFavoriteActions = () => {
     [dispatch],
   );
   const addFavorite = useCallback(
-    (bowlData: BowlOrder) => {
+    (bowlData: BowlData) => {
       dispatch(favoriteActions.addFavorite(bowlData));
       return bowlData.id;
     },

@@ -1,3 +1,5 @@
+import { UserOrder } from 'src/types';
+
 import { Api } from './api';
 
 class OrderService extends Api {
@@ -7,8 +9,8 @@ class OrderService extends Api {
     this.route = route;
   }
 
-  createOrder = (data: any) => {
-    this.post(this.route, data);
+  createOrder = (data: UserOrder) => {
+    return this.post(this.route, data);
   };
 }
 

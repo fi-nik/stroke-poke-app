@@ -90,4 +90,15 @@ export type BowlOrder = BowlData & {
   count: number;
 };
 
+export type UserOrder = {
+  bowlId: string;
+  sizeId: string;
+  baseId: string;
+  sauceId: string;
+  ingredients: string[];
+  extraIngredients: string[];
+}[];
+
+export type Cart = BowlOrder[];
+
 export type Favorite = BowlData;

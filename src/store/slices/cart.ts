@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { BowlData, BowlOrder } from 'src/types';
+import { BowlData, Cart } from 'src/types';
 export interface CartState {
-  list: BowlOrder[];
+  list: Cart;
 }
 
 const initialState: CartState = {
@@ -34,6 +34,9 @@ export const cartSlice = createSlice({
         }
       }
     },
+    cleanCart: state => {
+      state.list = [];
+    },
     removeBowl: (state, action) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
@@ -50,7 +53,7 @@ export const cartSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { removeBowl, addBowl, incrementBowl, decrementBowl } =
+export const { removeBowl, cleanCart, addBowl, incrementBowl, decrementBowl } =
   cartSlice.actions;
 
 export default cartSlice.reducer;

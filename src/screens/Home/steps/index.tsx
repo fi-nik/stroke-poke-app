@@ -7,7 +7,15 @@ import { SectionKeys } from 'screens/Home/types';
 import { ScreenWrapper } from 'src/components/ScreenWrapper';
 import { StepCounter } from 'src/components/StepCounter';
 import { Option } from 'src/components/options/types';
-import {Base, Bowl, BowlData, Favorite, Ingredient, Sauce, Size} from 'src/types';
+import {
+  Base,
+  Bowl,
+  BowlData,
+  Favorite,
+  Ingredient,
+  Sauce,
+  Size,
+} from 'src/types';
 
 type BowlDetailsData = {
   [SectionKeys.BowlSize]: Size;
@@ -98,12 +106,17 @@ export const Steps = ({
       )}
       {currentStep === 3 && (
         <BowlSummary
-          type={bowlType}
-          size={bowlDetails[SectionKeys.BowlSize]}
-          sauce={bowlDetails[SectionKeys.BowlSauce]}
-          base={bowlDetails[SectionKeys.BowlBase]}
-          ingredients={Object.values(bowlDetails[SectionKeys.BowlIngredients])}
-          extraIngredients={Object.values(extraIngredients)}
+          bowlData={{
+            id: bowlData.id,
+            type: bowlType,
+            size: bowlDetails[SectionKeys.BowlSize],
+            sauce: bowlDetails[SectionKeys.BowlSauce],
+            base: bowlDetails[SectionKeys.BowlBase],
+            ingredients: Object.values(
+              bowlDetails[SectionKeys.BowlIngredients],
+            ),
+            extraIngredients: Object.values(extraIngredients),
+          }}
         />
       )}
     </ScreenWrapper>

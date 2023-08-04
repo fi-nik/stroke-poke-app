@@ -1,6 +1,12 @@
 import { Headline } from 'src/components/text/Headline';
 import styled from 'styled-components/native';
-export const CardTitle = ({ title, price }) => (
+export const CardTitle = ({
+  title,
+  price,
+}: {
+  title: string;
+  price?: string;
+}) => (
   <Wrapper>
     <Headline>{title}</Headline>
     {price && <Headline>{price}</Headline>}

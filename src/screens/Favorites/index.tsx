@@ -44,7 +44,7 @@ export const FavoriteItem = memo(({ item }: { item: Favorite }) => {
   );
 });
 
-export const Favorites = () => {
+export const FavoritesScreen = () => {
   const favorites = useFavorites();
   const renderItem = useCallback(
     ({ item }: { item: Favorite }) => <FavoriteItem item={item} />,
