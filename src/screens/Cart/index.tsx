@@ -9,7 +9,7 @@ import { PrimaryButton } from 'src/components/button/PrimaryButton';
 import { SecondaryButton } from 'src/components/button/SecondaryButton';
 import { Body } from 'src/components/text/Body';
 import { Headline } from 'src/components/text/Headline';
-import { useCart } from 'src/hooks/cart/useCart';
+import { useCart } from 'src/hooks/cart';
 import { CartRoutes, TabRoutes } from 'src/router/types';
 import { BowlData, BowlOrder } from 'src/types';
 import { getCartTotal } from 'src/utils/price';

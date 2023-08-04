@@ -1,8 +1,7 @@
 import { useFormik } from 'formik';
 import { useCallback } from 'react';
-import { SectionKeys } from 'screens/Home/types';
 import { OptionValue } from 'src/components/options/types';
-import { Base, Sauce, Size } from 'src/types';
+import { Base, Sauce, Size, SectionKeys } from 'src/types';
 import { getSizeNumber } from 'src/utils/bowlSize';
 import * as yup from 'yup';
 
@@ -23,7 +22,7 @@ const ingredientValidationScheme = yup.object().shape({
     .object()
     .when([SectionKeys.BowlSize], ([size]: [Size], schema) => {
       return schema.test(
-        'maxKeys',
+        'maxIngredients',
         () => {
           if (!size) {
             return 'You need to select bowl size first';
@@ -104,9 +103,11 @@ export function useBowlDetailsForm({ onSubmit, initialValues }) {
   );
 
   const selectedIngredients = values[SectionKeys.BowlIngredients];
+
   const selectedSize = values[SectionKeys.BowlSize]
     ? getSizeNumber(values[SectionKeys.BowlSize] as Size)
     : 0;
+
   const onChangeIngredients = useCallback(
     async (value: OptionValue) => {
       await setFieldTouched(SectionKeys.BowlIngredients, true, false);
@@ -125,9 +126,11 @@ export function useBowlDetailsForm({ onSubmit, initialValues }) {
     },
     [setFieldValue, selectedIngredients, validateField, setFieldTouched],
   );
+
   const maxSelectedIngredients =
     touched[SectionKeys.BowlIngredients] &&
     Object.values(selectedIngredients).filter(a => a).length === selectedSize;
+
   return {
     onChangeBase,
     onChangeIngredients,

@@ -5,11 +5,11 @@ import { ArrowRightIcon } from 'src/components/icons/ArrowRight';
 import { Flex } from 'src/components/layout';
 import { Options } from 'src/components/options/Options';
 import { Option, OptionConfig } from 'src/components/options/types';
+import { useBowlTypeForm } from 'src/hooks/home';
 import { Bowl } from 'src/types';
 import styled from 'styled-components/native';
 
-import { useBowlTypeForm } from '../hooks/useBowlTypeForm';
-import { SectionKeys } from '../types';
+import { SectionKeys } from 'src/types';
 
 type Props = {
   onConfirm: (selectedBowl: Bowl) => void;

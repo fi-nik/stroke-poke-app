@@ -6,13 +6,14 @@ import { Bowl } from 'src/types';
 const useBowls = () => {
   const [bowls, setBowls] = useState<Bowl[]>([]);
   const [meta, setMeta] = useState(null);
+
   useEffect(() => {
     BowlService.getBowls()
       .then(({ meta, data }) => {
         setBowls(data);
         setMeta(meta);
       })
-      .catch(error => setBowls(null));
+      .catch(() => setBowls(null));
   }, []);
 
   return { bowls, meta };

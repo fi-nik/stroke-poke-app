@@ -14,7 +14,7 @@ const useExtraIngredients = () => {
         setExtraIngredients(data);
         setMeta(meta);
       })
-      .catch(error => setExtraIngredients(null));
+      .catch(() => setExtraIngredients(null));
   }, []);
 
   return { extraIngredients, meta };
@@ -37,7 +37,7 @@ export const useExtraIngredient = (id: string) => {
   useEffect(() => {
     ExtraIngredientService.getExtraIngredientById(id)
       .then(setExtraIngredient)
-      .catch(error => setExtraIngredient(null));
+      .catch(() => setExtraIngredient(null));
   }, [id]);
 
   return extraIngredient;

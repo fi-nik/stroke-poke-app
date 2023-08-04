@@ -3,7 +3,6 @@ import { BowlDetails } from 'screens/Home/steps/BowlDetails';
 import { BowlSummary } from 'screens/Home/steps/BowlSummary';
 import { BowlType } from 'screens/Home/steps/BowlType';
 import { ExtraIngredients } from 'screens/Home/steps/ExtraIngredients';
-import { SectionKeys } from 'screens/Home/types';
 import { ScreenWrapper } from 'src/components/ScreenWrapper';
 import { StepCounter } from 'src/components/StepCounter';
 import { Option } from 'src/components/options/types';
@@ -11,7 +10,7 @@ import {
   Base,
   Bowl,
   BowlData,
-  Favorite,
+  SectionKeys,
   Ingredient,
   Sauce,
   Size,

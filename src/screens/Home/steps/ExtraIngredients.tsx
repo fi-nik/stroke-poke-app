@@ -1,5 +1,4 @@
 import React from 'react';
-import { SectionKeys } from 'screens/Home/types';
 import { Card } from 'src/components/Card';
 import { PrimaryButton } from 'src/components/button/PrimaryButton';
 import { SecondaryButton } from 'src/components/button/SecondaryButton';
@@ -9,11 +8,10 @@ import { Options } from 'src/components/options/Options';
 import { Option } from 'src/components/options/types';
 import { Body } from 'src/components/text/Body';
 import { Headline } from 'src/components/text/Headline';
-import { ExtraIngredient, Size } from 'src/types';
+import { useExtraIngredientsForm } from 'src/hooks/home';
+import { ExtraIngredient, Size, SectionKeys } from 'src/types';
 import { calculatePrice } from 'src/utils/price';
 import styled, { useTheme } from 'styled-components/native';
-
-import { useExtraIngredientsForm } from '../hooks/useExtraIngredientsForm';
 
 type Props = {
   goBack: () => void;

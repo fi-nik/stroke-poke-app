@@ -1,6 +1,6 @@
-import {useFavorite} from "src/hooks/favorites/useFavorite";
+import { useFavorite } from './useFavorite';
 
-export function useIsFavorite(favoriteId: string){
-    const favorite = useFavorite(favoriteId)
-    return !!favorite
+export function useIsFavorite(favoriteId: string) {
+  const favorite = useFavorite(favoriteId);
+  return !!favorite;
 }

@@ -1,5 +1,14 @@
 import * as Crypto from 'expo-crypto';
 
+export enum SectionKeys {
+  BowlType = 'poke',
+  BowlSize = 'size',
+  BowlBase = 'base',
+  BowlSauce = 'sauce',
+  BowlIngredients = 'ingredients',
+  ExtraIngredients = 'extra_ingredients',
+}
+
 export type Base = {
   id: number;
   name: string;

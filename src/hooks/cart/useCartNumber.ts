@@ -1,5 +1,6 @@
-import {useCart} from "./useCart";
+import { useCart } from './useCart';
+
 export function useCartNumber() {
-  const cart =useCart()
+  const cart = useCart();
   return cart.length;
 }

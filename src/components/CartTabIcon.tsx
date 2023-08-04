@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useCartNumber } from 'src/hooks/cart/useCartNumber';
+import { useCartNumber } from 'src/hooks/cart';
 import styled from 'styled-components/native';
 
 import { CartIcon } from './icons/Cart';

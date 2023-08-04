@@ -9,7 +9,7 @@ import { FavoriteIcon } from 'src/components/icons/Favorites';
 import { TrashIcon } from 'src/components/icons/Trash';
 import { FlexRow } from 'src/components/layout';
 import { Body } from 'src/components/text/Body';
-import { useCartActions } from 'src/hooks/cart/useCartActions';
+import { useCartActions } from 'src/hooks/cart';
 import { useIsFavorite } from 'src/hooks/favorites/useIsFavorite';
 import { BowlOrder } from 'src/types';
 import styled, { useTheme } from 'styled-components/native';

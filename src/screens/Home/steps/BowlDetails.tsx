@@ -6,10 +6,10 @@ import { ArrowRightIcon } from 'src/components/icons/ArrowRight';
 import { Flex, FlexShrink } from 'src/components/layout';
 import { Options } from 'src/components/options/Options';
 import { OptionConfig } from 'src/components/options/types';
+import { useBowlDetailsForm } from 'src/hooks/home';
 import styled from 'styled-components/native';
 
-import { useBowlDetailsForm } from '../hooks/useBowlDetailsForm';
-import { SectionKeys } from '../types';
+import { SectionKeys} from 'src/types';
 
 export function BowlDetails({
   sizeOptions,

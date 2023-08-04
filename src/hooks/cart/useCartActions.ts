@@ -1,13 +1,10 @@
-import { useNavigation } from '@react-navigation/native';
 import { useCallback, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
-import { TabScreenNavigationProp, TabRoutes } from 'src/router/types';
 import { favoriteActions, cartActions } from 'src/store';
-import { BowlData, BowlOrder, Favorite } from 'src/types';
+import { BowlOrder } from 'src/types';
 
 export const useCartActions = () => {
   const dispatch = useDispatch();
-  const navigation = useNavigation<TabScreenNavigationProp<TabRoutes.Cart>>();
 
   const removeFavorite = useCallback(
     (favoriteId: string) => {

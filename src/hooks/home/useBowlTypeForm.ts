@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
-import { SectionKeys } from 'screens/Home/types';
-import { Bowl } from 'src/types';
+import { Bowl, SectionKeys } from 'src/types';
 import * as yup from 'yup';
 
 export function useBowlTypeForm({ onSubmit, initialValue }) {
