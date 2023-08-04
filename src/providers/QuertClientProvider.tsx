@@ -35,7 +35,9 @@ const prefetchData = async () => {
     queryFn: () => ExtraIngredientService.getExtraIngredients(),
   });
 };
+
 prefetchData();
+
 export function QueryProvider(props) {
   return <QueryClientProvider {...props} client={queryClient} />;
 }

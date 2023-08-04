@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useCallback } from 'react';
 import { CartTab } from 'src/components/CartTabIcon';
 import { Logo } from 'src/components/Logo';
 import { FavoriteIcon } from 'src/components/icons/Favorites';
@@ -15,19 +16,21 @@ const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
 export function TabNavigator() {
   const theme = useTheme();
+  const screenOptions = useCallback(
+    ({ navigation }) => ({
+      headerTitle: '',
+      headerLeft: () => <MenuIcon onPress={() => navigation.toggleDrawer()} />,
+      headerLeftContainerStyle: { paddingLeft: 12 },
+      headerRight: () => <Logo />,
+      headerRightContainerStyle: { paddingRight: 12 },
+      tabBarActiveTintColor: theme.colors.primary,
+    }),
+    [theme],
+  );
   return (
     <Tab.Navigator
       initialRouteName={TabRoutes.Home}
-      screenOptions={({ navigation }) => ({
-        headerTitle: '',
-        headerLeft: () => (
-          <MenuIcon onPress={() => navigation.toggleDrawer()} />
-        ),
-        headerLeftContainerStyle: { paddingLeft: 12 },
-        headerRight: () => <Logo />,
-        headerRightContainerStyle: { paddingRight: 12 },
-        tabBarActiveTintColor: theme.colors.primary,
-      })}>
+      screenOptions={screenOptions}>
       <Tab.Screen
         name={TabRoutes.Home}
         component={HomeScreen}
