@@ -5,11 +5,20 @@ import { SecondaryButton } from 'src/components/button/SecondaryButton';
 import { ArrowRightIcon } from 'src/components/icons/ArrowRight';
 import { Flex, FlexShrink } from 'src/components/layout';
 import { Options } from 'src/components/options/Options';
-import { OptionConfig } from 'src/components/options/types';
+import { Option, OptionConfig } from 'src/components/options/types';
 import { useBowlDetailsForm } from 'src/hooks/home';
-import { SectionKeys } from 'src/types';
+import { BowlDetailsData, SectionKeys } from 'src/types';
 import styled from 'styled-components/native';
 
+type Props = {
+  goBack;
+  onConfirm;
+  sizeOptions: Option[];
+  baseOptions: Option[];
+  sauceOptions: Option[];
+  ingredientOptions: Option[];
+  initialValues: BowlDetailsData;
+};
 export function BowlDetails({
   sizeOptions,
   goBack,
@@ -18,7 +27,7 @@ export function BowlDetails({
   sauceOptions,
   ingredientOptions,
   initialValues,
-}) {
+}: Props) {
   const {
     errors,
     maxSelectedIngredients,

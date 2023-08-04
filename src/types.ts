@@ -71,6 +71,14 @@ export enum QueryKey {
   Ingredients = 'ingredients',
   ExtraIngredients = 'extra_ingredients',
 }
+
+export type BowlDetailsData = {
+  [SectionKeys.BowlSize]: Size;
+  [SectionKeys.BowlBase]: Base;
+  [SectionKeys.BowlSauce]: Sauce;
+  [SectionKeys.BowlIngredients]: Ingredient[];
+};
+
 export class BowlData {
   constructor() {
     this.id = Crypto.randomUUID();

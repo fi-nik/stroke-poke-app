@@ -58,10 +58,10 @@ export function CheckoutScreen({ navigation }) {
       payment: null,
       note: '',
     },
-    validationSchema,
+    // validationSchema,
     onSubmit: () => {
       const data = cart.map(order => ({
-        bowlId: `${order.type.id}`,
+        bowlId: null,
         sizeId: `${order.size.id}`,
         baseId: `${order.base.id}`,
         sauceId: `${order.sauce.id}`,

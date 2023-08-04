@@ -5,18 +5,8 @@ import { AppNavigator } from 'src/router/AppRouter';
 import 'react-native-gesture-handler';
 import { StoreProvider } from 'src/store';
 import styled, { ThemeProvider } from 'styled-components/native';
-
-const theme = {
-  colors: {
-    primary: '#F86060',
-    secondary: 'yellow',
-    white: '#FFF',
-    black: '#292838',
-    border: {
-      primary: '#E9E8F8',
-    },
-  },
-};
+import { RootSiblingParent } from 'react-native-root-siblings';
+import { theme } from 'src/modules/Theme';
 
 export default function App() {
   return (
@@ -24,7 +14,9 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <QueryProvider>
           <NavigationContainer>
-            <AppContent />
+            <RootSiblingParent>
+              <AppContent />
+            </RootSiblingParent>
           </NavigationContainer>
         </QueryProvider>
       </ThemeProvider>

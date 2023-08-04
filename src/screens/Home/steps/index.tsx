@@ -2,27 +2,12 @@ import { useState, useCallback } from 'react';
 import { ScreenWrapper } from 'src/components/ScreenWrapper';
 import { StepCounter } from 'src/components/StepCounter';
 import { Option } from 'src/components/options/types';
-import {
-  Base,
-  Bowl,
-  BowlData,
-  SectionKeys,
-  Ingredient,
-  Sauce,
-  Size,
-} from 'src/types';
+import { Bowl, BowlData, SectionKeys, BowlDetailsData } from 'src/types';
 
 import { BowlDetails } from './BowlDetails';
 import { BowlSummary } from './BowlSummary';
 import { BowlType } from './BowlType';
 import { ExtraIngredients } from './ExtraIngredients';
-
-type BowlDetailsData = {
-  [SectionKeys.BowlSize]: Size;
-  [SectionKeys.BowlBase]: Base;
-  [SectionKeys.BowlSauce]: Sauce;
-  [SectionKeys.BowlIngredients]: Record<string, Ingredient>;
-};
 
 type Props = {
   bowlData: BowlData;
@@ -34,13 +19,7 @@ type Props = {
   extraIngredientsOptions: Option[];
 };
 
-function convertToMap<T extends { id: string | number }>(items: T[]) {
-  const map = {};
-  items.forEach(item => (map[item.id] = item));
-  return map;
-}
-
-export function Steps ({
+export function Steps({
   bowlData,
   bowlOptions,
   baseOptions,
@@ -55,14 +34,14 @@ export function Steps ({
     [setCurrentStep],
   );
   const [extraIngredients, setExtraIngredients] = useState(
-    convertToMap(bowlData.extraIngredients),
+    bowlData.extraIngredients,
   );
   const [bowlType, setBowlType] = useState<Bowl>(bowlData.type);
   const [bowlDetails, setBowlDetails] = useState<BowlDetailsData>({
     [SectionKeys.BowlSize]: bowlData.size,
     [SectionKeys.BowlBase]: bowlData.base,
     [SectionKeys.BowlSauce]: bowlData.sauce,
-    [SectionKeys.BowlIngredients]: convertToMap(bowlData.ingredients),
+    [SectionKeys.BowlIngredients]: bowlData.ingredients,
   });
 
   return (
@@ -124,4 +103,4 @@ export function Steps ({
       )}
     </ScreenWrapper>
   );
-};
+}

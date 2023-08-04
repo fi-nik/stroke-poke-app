@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import { useCallback } from 'react';
 import { OptionValue } from 'src/components/options/types';
 import { Base, Sauce, Size, SectionKeys } from 'src/types';
-import { getSizeNumber } from 'src/utils/bowlSize';
+import { convertToMap, getSizeNumber } from 'src/utils/orderHelpers';
 import * as yup from 'yup';
 
 const ingredientValidationScheme = yup.object().shape({
@@ -57,7 +57,10 @@ export const useBowlDetailsForm = ({ onSubmit, initialValues }) => {
     validateField,
   } = useFormik<Values>({
     validateOnChange: false,
-    initialValues: initialValues as Values,
+    initialValues: {
+      ...initialValues,
+      ingredients: convertToMap(initialValues.ingredients),
+    },
     onSubmit: values =>
       onSubmit({
         ...values,

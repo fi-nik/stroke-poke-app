@@ -1,14 +1,22 @@
 import { useFormik } from 'formik';
 import { useCallback, useMemo } from 'react';
 import { ExtraIngredient, SectionKeys } from 'src/types';
+import { convertToMap } from 'src/utils/orderHelpers';
 
-export const useExtraIngredientsForm = ({ onSubmit, initialValues }) => {
+export const useExtraIngredientsForm = ({
+  onSubmit,
+  initialValues,
+}: {
+  initialValues: ExtraIngredient[];
+  onSubmit: (values: ExtraIngredient[]) => void;
+}) => {
+  console.log('initialValues', initialValues);
   const { setFieldValue, values, handleSubmit } = useFormik<{
     [SectionKeys.ExtraIngredients]: Record<string, ExtraIngredient>;
   }>({
     validateOnChange: false,
     initialValues: {
-      [SectionKeys.ExtraIngredients]: initialValues,
+      [SectionKeys.ExtraIngredients]: convertToMap(initialValues),
     },
     onSubmit: values => {
       onSubmit(Object.values(values[SectionKeys.ExtraIngredients]));

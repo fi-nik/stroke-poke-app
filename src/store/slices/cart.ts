@@ -13,7 +13,14 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addBowl: (state, action: { payload: BowlData }) => {
-      state.list.push({ ...action.payload, count: 1 });
+      const bowlIndex = state.list.findIndex(
+        bowl => bowl.id === action.payload.id,
+      );
+      if (bowlIndex !== -1) {
+        state.list[bowlIndex].count++;
+      } else {
+        state.list.push({ ...action.payload, count: 1 });
+      }
     },
     incrementBowl: (state, action: { payload: string }) => {
       const bowlIndex = state.list.findIndex(

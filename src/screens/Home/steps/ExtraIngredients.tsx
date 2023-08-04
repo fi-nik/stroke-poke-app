@@ -17,7 +17,7 @@ type Props = {
   goBack: () => void;
   onConfirm: (selectedExtraIngredients: ExtraIngredient[]) => void;
   extraIngredients: Option[];
-  initialValues: Record<number, ExtraIngredient>;
+  initialValues: ExtraIngredient[];
   size: Size;
 };
 

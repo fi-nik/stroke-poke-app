@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { Option } from 'src/components/options/types';
 import { useBowlDetails } from 'src/hooks/home/useBowlDetails';
 import { Size } from 'src/types';
-import { getSizeNumber } from 'src/utils/bowlSize';
+import { getSizeNumber } from 'src/utils/orderHelpers';
 
 export const useBowlDetailsOptions = (): {
   sizes: Option[];
