@@ -48,6 +48,7 @@ type Values = Record<
 
 export const useBowlDetailsForm = ({ onSubmit, initialValues }) => {
   const {
+
     setFieldValue,
     touched,
     values,
@@ -55,6 +56,7 @@ export const useBowlDetailsForm = ({ onSubmit, initialValues }) => {
     handleSubmit,
     setFieldTouched,
     validateField,
+    isValid,
   } = useFormik<Values>({
     validateOnChange: false,
     initialValues: {
@@ -135,6 +137,7 @@ export const useBowlDetailsForm = ({ onSubmit, initialValues }) => {
     Object.values(selectedIngredients).filter(a => a).length === selectedSize;
 
   return {
+    isValid,
     onChangeBase,
     onChangeIngredients,
     onChangeSauce,

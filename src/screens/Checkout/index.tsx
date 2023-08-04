@@ -8,6 +8,7 @@ import { Select } from 'src/components/input/Select';
 import { TextInput } from 'src/components/input/TextInput';
 import { Headline } from 'src/components/text/Headline';
 import { useCart, useCreateOrder } from 'src/hooks/cart';
+import { useValidationToast } from 'src/hooks/useValidationToast';
 import { CartRoutes, TabRoutes } from 'src/router/types';
 import { BowlData } from 'src/types';
 import styled, { useTheme } from 'styled-components/native';
@@ -78,6 +79,7 @@ export function CheckoutScreen({ navigation }) {
     },
   });
 
+  useValidationToast(formik.errors, formik.isValid);
   return (
     <ScreenWrapper>
       <Title>Delivery details</Title>

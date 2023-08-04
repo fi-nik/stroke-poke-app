@@ -6,6 +6,7 @@ import { Flex } from 'src/components/layout';
 import { Options } from 'src/components/options/Options';
 import { Option, OptionConfig } from 'src/components/options/types';
 import { useBowlTypeForm } from 'src/hooks/home';
+import { useValidationToast } from 'src/hooks/useValidationToast';
 import { Bowl, SectionKeys } from 'src/types';
 import styled from 'styled-components/native';
 
@@ -20,6 +21,8 @@ export function BowlType({ onConfirm, options, initialValue }: Props) {
     onSubmit: onConfirm,
     initialValue,
   });
+
+  useValidationToast(form.errors, form.isValid);
 
   const data = [
     {

@@ -7,6 +7,7 @@ import { Flex, FlexShrink } from 'src/components/layout';
 import { Options } from 'src/components/options/Options';
 import { Option, OptionConfig } from 'src/components/options/types';
 import { useBowlDetailsForm } from 'src/hooks/home';
+import { useValidationToast } from 'src/hooks/useValidationToast';
 import { BowlDetailsData, SectionKeys } from 'src/types';
 import styled from 'styled-components/native';
 
@@ -38,7 +39,10 @@ export function BowlDetails({
     onChangeIngredients,
     onChangeBase,
     handleSubmit,
+    isValid,
   } = useBowlDetailsForm({ onSubmit: onConfirm, initialValues });
+
+  useValidationToast(errors, isValid);
 
   const data = [
     {
