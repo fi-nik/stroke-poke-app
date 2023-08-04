@@ -15,7 +15,7 @@ Mobile application for food ordering in React Native (Expo).
 
 ## Installation
 
-Explain how to install the necessary dependencies and set up the project locally. Provide clear, step-by-step instructions, and include code snippets if necessary.
+Before cloning project, checkout  [installation guide](https://docs.expo.dev/get-started/installation/) in order to install all required dependencies
 
 ```bash
 # Clone the repository
@@ -27,7 +27,7 @@ cd StokePoke
 # Install dependencies
 yarn install
 ````
-
+### Environment variables
 Create new .env file based on .env.template and fill it with data
 
 
@@ -60,22 +60,24 @@ After running the above command, the Expo development server will start, and it 
      * The app will load on the iOS simulator.
 
 ## Features
-List the main features of your application. Be concise and to the point. You can use bullet points for easy readability.
-
-- Feature 1
-- Feature 2
-...
+- Order bowls
+- Save favorite bowls
+- See our locations
 
 ## Technologies Used
-List the key technologies and frameworks used in your project.
+List the key technologies and frameworks used in project.
 - [Expo](https://expo.dev/)
 - [React Native](https://reactnative.dev/)
 - [React-Query](https://tanstack.com/)
 - [Formik](https://formik.org/)
 - [Yup](https://github.com/jquense/yup)
-- [...other libraries and tools]
+- [redux-toolkit](https://redux-starter-kit.js.org/)
+- [redux-persistor](https://github.com/rt2zz/redux-persist)
 
 
 ## Contributing
-
+#### Contributors:
+* fi-nik
+  * [Github](https://github.com/fi-nik)
+  * [Email](mailto:fi.nik@outlook.com)
 ## Licence
